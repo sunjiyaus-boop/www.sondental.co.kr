@@ -113,8 +113,12 @@ ul,ol{list-style:none}
 .stat-num{font-size:40px;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1}
 .stat-num span{font-size:18px;font-weight:600;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:8px;font-weight:500}
-@media(max-width:768px){.stat-item{padding:12px 20px;min-width:33.3%}}.stat-item:nth-child(3n){border-right:none}
-@media(max-width:480px){.stat-item{min-width:50%}}
+@media(max-width:768px){
+  .stat-item{padding:12px 20px;min-width:50%;border-right:1px solid rgba(255,255,255,0.12)}
+  .stat-item:nth-child(2n){border-right:none}
+  .stat-item:last-child{border-right:none;min-width:100%}
+  .stat-num{font-size:32px}
+}
 
 /* ── Section Header ── */
 .section-header{text-align:center;margin-bottom:60px}
@@ -238,15 +242,18 @@ ul,ol{list-style:none}
 .treat-cat-tag{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:rgba(26,41,66,0.08);color:var(--son-navy);padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:10px}
 .treat-cat-title{font-size:clamp(22px,2.6vw,32px);font-weight:900;color:var(--son-navy)}
 .treat-cat-desc{font-size:15px;color:var(--color-text-light);line-height:1.8;text-align:right;flex-shrink:0;max-width:280px;padding-top:6px;word-break:keep-all}
+/* treat-inner 데스크탑 */
+.treat-inner{display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center}
+
 @media(max-width:768px){
   .treat-block{padding:28px 16px}
-  /* 진료 카드 내부 그리드 → 1열로 */
-  .treat-block > div[style*="grid-template-columns"],
-  .treat-block > div > div[style*="grid-template-columns"]{
+  /* treat-inner 모바일 → 1열 세로 */
+  .treat-inner{
     display:flex !important;
     flex-direction:column !important;
     gap:20px !important;
   }
+  .treat-inner img{width:100%;max-width:100%}
   /* 카테고리 헤더 세로 정렬 */
   .treat-cat-header{flex-direction:column;gap:8px;align-items:flex-start}
   .treat-cat-desc{text-align:left;max-width:100%;font-size:14px}
@@ -272,6 +279,20 @@ ul,ol{list-style:none}
   .treat-block p, .treat-block li{
     line-height:1.9;
     word-break:keep-all;
+  }
+  /* 3열 그리드 → 1열 */
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns: repeat(3"]{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+  /* S.O.N Plant 섹션 하단 위치 조정 */
+  div[style*="position:absolute;bottom:0"]{
+    position:relative !important;
+    bottom:auto !important;
+    left:auto !important;
+    transform:none !important;
+    padding:40px 20px !important;
   }
 }
 
@@ -841,7 +862,7 @@ ul,ol{list-style:none}
           <span class="treat-block-num">01</span>
           <h3 class="treat-block-title">치경부 마모</h3>
         </div>
-        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+        <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">치아가 닳고 시린 증상</p>
             <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">칫솔질, 산 부식, 교합력 등으로 치아 경부(잇몸 경계부)가 마모되어 시리고 파인 형태가 나타납니다. 레진으로 정밀하게 수복해 시린 증상을 없애고 치아를 보호합니다.</p>
@@ -855,7 +876,7 @@ ul,ol{list-style:none}
           <span class="treat-block-num">02</span>
           <h3 class="treat-block-title">신경치료</h3>
         </div>
-        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+        <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-o);font-weight:700;margin-bottom:12px">자연치아를 끝까지 살립니다</p>
             <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">충치가 깊어지거나 외상으로 치수(신경)가 손상되면 신경치료가 필요합니다. 감염된 치수를 완전히 제거하고 정밀하게 충전해, 자연치아를 최대한 보존합니다.</p>
@@ -869,7 +890,7 @@ ul,ol{list-style:none}
           <span class="treat-block-num">03</span>
           <h3 class="treat-block-title">인레이</h3>
         </div>
-        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+        <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-n);font-weight:700;margin-bottom:12px">치아 모양 그대로 정밀 수복</p>
             <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">충치를 제거한 후 치아 형태에 맞게 도자기(세라믹)나 레진으로 제작한 보철물을 정확하게 끼워 넣는 방식입니다. 자연치와 색상이 비슷해 심미적으로도 우수합니다.</p>
@@ -883,7 +904,7 @@ ul,ol{list-style:none}
           <span class="treat-block-num">04</span>
           <h3 class="treat-block-title">크라운</h3>
         </div>
-        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+        <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">치아 전체를 감싸 보호합니다</p>
             <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">신경치료 후나 치아가 많이 손상된 경우, 치아 전체를 덮는 크라운으로 강도를 회복시킵니다. 자체 기공소를 운영해 정밀하고 자연스러운 보철물을 제작합니다.</p>
@@ -905,7 +926,7 @@ ul,ol{list-style:none}
 
       <div class="treat-block fade-in">
         <div style="display:flex;flex-direction:column;gap:56px">
-          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">S.O.N Plant System</p>
               <p style="font-size:15px;color:var(--son-navy);font-weight:700;margin-bottom:12px">꼭 필요한 곳에만, 정확하게</p>
@@ -913,7 +934,7 @@ ul,ol{list-style:none}
             </div>
             <img src="images/treatment-son-plant.png" alt="S.O.N Plant 시스템" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
           </div>
-          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Overdenture</p>
               <p style="font-size:15px;color:var(--son-navy);font-weight:700;margin-bottom:12px">임플란트로 고정하는 틀니</p>
@@ -934,7 +955,7 @@ ul,ol{list-style:none}
         </div>
       </div>
       <div class="treat-block fade-in">
-        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+        <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-o);font-weight:700;margin-bottom:12px">전원 자가결찰 브라켓으로 더 빠르고 정확하게</p>
             <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all;margin-bottom:24px">모든 교정 환자에게 자가결찰 브라켓을 적용해 마찰력을 줄이고 치료 효율을 높입니다. 유지장치·교정 pin 등 추가 장치가 진료비에 모두 포함되어 있어 예측 가능한 비용으로 교정 치료를 받으실 수 있습니다.</p>
@@ -964,7 +985,7 @@ ul,ol{list-style:none}
         <p class="treat-cat-desc">건강하면서도 아름다운<br>자연스러운 미소를 만들어드립니다</p>
       </div>
       <div class="treat-block fade-in">
-        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+        <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">한 번에 끝내지 않습니다 — 단계적으로 오래가는 미백</p>
             <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all;margin-bottom:24px">정밀 색상 진단 후 3사이클 집중 미백을 진행하고, 1~2개월 후 보강 1사이클을 추가합니다. 처음부터 하얗게 만드는 것이 아니라 단계적으로 밝기를 높여 자연스럽고 오래가는 결과를 만들어냅니다.</p>
@@ -995,7 +1016,7 @@ ul,ol{list-style:none}
         <div style="display:flex;flex-direction:column;gap:56px">
 
           <!-- 턱관절 -->
-          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">TMJ Treatment</p>
               <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">턱관절 치료</p>
@@ -1005,7 +1026,7 @@ ul,ol{list-style:none}
           </div>
 
           <!-- 치근단 -->
-          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Apicoectomy</p>
               <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">현미경 치근단절제술</p>
@@ -1015,7 +1036,7 @@ ul,ol{list-style:none}
           </div>
 
           <!-- 치은재생 -->
-          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-o);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Gingival Regeneration</p>
               <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">치은 재생술</p>
@@ -1025,7 +1046,7 @@ ul,ol{list-style:none}
           </div>
 
           <!-- 낭종제거 -->
-          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Cyst Removal</p>
               <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">낭종 제거술</p>
@@ -1337,89 +1358,4 @@ function renderPopup(d){
 }
 
 function closePopup(){document.getElementById('popupOverlay').classList.add('hidden');}
-function checkToday(){
-  if(document.getElementById('todayChk').checked){const e=new Date();e.setHours(23,59,59,0);localStorage.setItem('popupHideUntil',e.getTime());}
-  else localStorage.removeItem('popupHideUntil');
-}
-function saveEnabled(){localStorage.setItem('popupEnabled',document.getElementById('popupEnabled').checked?'1':'0');}
-function previewPopupImg(){
-  const file=document.getElementById('popupFile').files[0]; if(!file)return;
-  const r=new FileReader();
-  r.onload=e=>{const p=document.getElementById('popupImgPrev');p.src=e.target.result;p.style.display='block';};
-  r.readAsDataURL(file);
-}
-function savePopupDesign(){
-  const bg=document.querySelector('input[name="popupBg"]:checked')?.value||'gradient';
-  const imgSrc=document.getElementById('popupImgPrev').src||'';
-  const d={bg,img:bg==='image'?imgSrc:'',title:document.getElementById('popupTitle').value||POPUP_DEFAULT.title,body:document.getElementById('popupBody').value||POPUP_DEFAULT.body,btn:document.getElementById('popupBtn').value,link:document.getElementById('popupLink').value||'#location'};
-  localStorage.setItem('popupDesign',JSON.stringify(d));
-  renderPopup(d); alert('팝업이 저장되었습니다!');
-}
-function previewPopupNow(){
-  const bg=document.querySelector('input[name="popupBg"]:checked')?.value||'gradient';
-  const imgSrc=document.getElementById('popupImgPrev').src||'';
-  const d={bg,img:bg==='image'?imgSrc:'',title:document.getElementById('popupTitle').value||POPUP_DEFAULT.title,body:document.getElementById('popupBody').value||POPUP_DEFAULT.body,btn:document.getElementById('popupBtn').value,link:document.getElementById('popupLink').value||'#location'};
-  renderPopup(d); document.getElementById('popupOverlay').classList.remove('hidden');
-}
-function resetPopupDesign(){localStorage.removeItem('popupDesign');renderPopup(POPUP_DEFAULT);loadAdminFields(POPUP_DEFAULT);alert('초기화되었습니다.');}
-function loadAdminFields(d){
-  const bg=document.querySelector(`input[name="popupBg"][value="${d.bg}"]`); if(bg)bg.checked=true;
-  document.getElementById('popupTitle').value=d.title||'';
-  document.getElementById('popupBody').value=d.body||'';
-  document.getElementById('popupBtn').value=d.btn||'';
-  document.getElementById('popupLink').value=d.link||'';
-}
-
-// ── 초기화 ────────────────────────────────────────────────────────────────────
-(function(){
-  const d=getPopupData(); renderPopup(d); loadAdminFields(d);
-  const hide=localStorage.getItem('popupHideUntil');
-  const off=localStorage.getItem('popupEnabled')==='0';
-  if(!off&&!(hide&&Date.now()<parseInt(hide)))setTimeout(()=>document.getElementById('popupOverlay')?.classList.remove('hidden'),500);
-  const chk=document.getElementById('popupEnabled'); if(chk)chk.checked=localStorage.getItem('popupEnabled')!=='0';
-})();
-
-function toggleMenu(){document.getElementById('nav').classList.toggle('open');}
-
-// ── 관리자 잠금 ───────────────────────────────────────────────────────────────
-const ADMIN_PW = 'son2024';  // ← 비밀번호 여기서 변경
-function toggleAdmin(){
-  const p=document.getElementById('adminPanel');
-  if(p) p.classList.toggle('open');
-}
-// 비밀번호 입력 후 버튼 표시
-function unlockAdmin(){
-  const pw = prompt('관리자 비밀번호를 입력하세요:');
-  if(pw === ADMIN_PW){
-    document.querySelector('.admin-btn-float').classList.add('unlocked');
-    sessionStorage.setItem('adminUnlocked','1');
-    toggleAdmin();
-  } else if(pw !== null){
-    alert('비밀번호가 올바르지 않습니다.');
-  }
-}
-// URL에 #admin 있으면 관리자 모드 진입
-(function(){
-  function checkHash(){
-    if(location.hash==='#admin'){
-      history.replaceState(null,'',location.pathname);
-      if(sessionStorage.getItem('adminUnlocked')==='1'){
-        document.querySelector('.admin-btn-float').classList.add('unlocked');
-        toggleAdmin();
-      } else {
-        unlockAdmin();
-      }
-    }
-  }
-  checkHash();
-  window.addEventListener('hashchange', checkHash);
-})();
-// 세션 유지 (새로고침해도 비번 재입력 불필요)
-if(sessionStorage.getItem('adminUnlocked')==='1'){
-  document.querySelector('.admin-btn-float')?.classList.add('unlocked');
-}
-function saveImg(type){}
-function previewImg(type){const f=document.getElementById(type+'File');if(!f||!f.files[0])return;const r=new FileReader();r.onload=e=>{if(type==='hero'){const bg=document.getElementById('heroBg');if(bg)bg.style.backgroundImage=`url('${e.target.result}')`;localStorage.setItem('heroBg',e.target.result);}};r.readAsDataURL(f.files[0]);}
-</script>
-</body>
-</html>
+functi
