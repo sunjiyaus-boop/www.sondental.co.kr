@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="우리곁, 진료잘하는 연세손치과의원 | 인천 부평구 | 임플란트·교정·심미·통합진료 | 보건복지부장관상 수상 | 연세대 출신 의료진">
+<title>연세손치과의원 | 우리곁, 진료잘하는 SON 치과</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+:root{
+  --son-s:#ED4824;--son-o:#58B847;--son-n:#00A2E8;
+  --son-navy:#1A2942;--son-dark:#0D1421;
+  --color-text:#2C3E50;--color-text-light:#5F6B7A;--color-text-muted:#8B95A1;
+  --color-bg:#FFFFFF;--color-bg-light:#F8F9FB;--color-border:#E8EBF0;
+  --gradient-son:linear-gradient(135deg,#ED4824 0%,#58B847 50%,#00A2E8 100%);
+  --shadow-sm:0 2px 8px rgba(26,41,66,0.06);--shadow-md:0 8px 24px rgba(26,41,66,0.10);--shadow-lg:0 20px 60px rgba(26,41,66,0.15);
+  --radius-sm:8px;--radius-md:16px;--radius-lg:24px;
+  --transition:all 0.3s cubic-bezier(0.4,0,0.2,1)
+}
+
+body{font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.7;color:var(--color-text);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;transition:var(--transition)}
+img{max-width:100%;height:auto;display:block}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+ul,ol{list-style:none}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+@media(max-width:768px){.section{padding:64px 0}}
+
+/* ── Header ── */
+.header{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);transition:var(--transition)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1400px;margin:0 auto;padding:0 32px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-badge{background:var(--gradient-son);color:#fff;font-weight:900;font-size:17px;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;letter-spacing:-1px}
+.logo-text-wrap{line-height:1.2}
+.logo-tag{font-size:10px;font-weight:500;color:var(--color-text-muted);letter-spacing:0.5px}
+.logo-name{font-size:18px;font-weight:800;color:var(--son-navy)}
+.logo-name .s{color:#ED4824}.logo-name .o{color:#58B847}.logo-name .n{color:#00A2E8}
+/* ── 스크롤 진행 바 ── */
+#scroll-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--son-s),var(--son-o),var(--son-n));z-index:9999;transition:width 0.1s linear}
+
+/* ── 헤더 ── */
+.header{transition:background 0.3s,box-shadow 0.3s,backdrop-filter 0.3s}
+.header.scrolled{background:rgba(255,255,255,0.88)!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 2px 24px rgba(0,0,0,0.10)}
+
+/* ── 네비 ── */
+.nav{display:flex;gap:4px;align-items:center}
+.nav-link{font-size:15px;font-weight:500;color:var(--color-text);padding:6px 14px;border-radius:8px;transition:background 0.2s,color 0.2s;position:relative}
+.nav-link:hover{color:var(--son-s);background:rgba(237,72,36,0.06)}
+.nav-link.active{color:var(--son-s);font-weight:700}
+.nav-link.active::after{content:'';position:absolute;bottom:-2px;left:14px;right:14px;height:2px;background:var(--son-s);border-radius:2px}
+.nav-cta{display:flex;align-items:center;gap:8px;padding:10px 20px;background:var(--son-navy);color:#fff;border-radius:100px;font-size:14px;font-weight:600;margin-left:8px;transition:var(--transition)}
+.nav-cta:hover{background:var(--son-s);transform:translateY(-1px)}
+.menu-btn{display:none;flex-direction:column;gap:5px;width:36px;height:36px;align-items:center;justify-content:center;cursor:pointer}
+.menu-btn span{width:22px;height:2px;background:var(--son-navy);border-radius:2px;transition:var(--transition)}
+
+/* ── 드롭다운 ── */
+.nav-drop{position:relative}
+.nav-drop-btn{display:flex;align-items:center;gap:5px;cursor:pointer}
+.nav-drop-btn .arrow{font-size:10px;transition:transform 0.25s;display:inline-block}
+.nav-drop:hover .arrow{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--color-border);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.12);padding:8px;min-width:160px;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-8px);transition:opacity 0.2s,transform 0.2s,visibility 0.2s;z-index:200}
+.nav-drop:hover .nav-drop-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav-drop-menu a{display:block;padding:9px 16px;font-size:14px;font-weight:500;color:var(--color-text);border-radius:8px;white-space:nowrap;transition:background 0.15s,color 0.15s}
+.nav-drop-menu a:hover{background:rgba(237,72,36,0.07);color:var(--son-s)}
+.nav-drop-menu .drop-divider{height:1px;background:var(--color-border);margin:4px 8px}
+
+@media(max-width:900px){
+  .nav{display:none}.menu-btn{display:flex}
+  .header-inner{padding:0 20px}
+  .nav.open{display:flex;flex-direction:column;align-items:flex-start;gap:0;position:absolute;top:76px;left:0;right:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--color-border);padding:16px 20px 24px}
+  .nav-link{padding:12px 4px;width:100%;border-bottom:1px solid var(--color-border);border-radius:0}
+  .nav-link.active::after{display:none}
+  .nav-cta{margin-top:16px;width:100%;justify-content:center;margin-left:0}
+  .nav-drop-menu{position:static;transform:none!important;opacity:1!important;visibility:visible!important;box-shadow:none;border:none;padding:0 0 0 16px;background:transparent}
+  .nav-drop-btn .arrow{display:none}
+}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--son-dark)}
+.hero-bg{position:absolute;inset:0;background-image:url('images/exterior.png');background-size:cover;background-position:center center;opacity:0.45}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,20,33,0.2) 0%,rgba(13,20,33,0.65) 100%)}
+.hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:0 24px;max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.14);border:1.5px solid rgba(255,255,255,0.35);backdrop-filter:blur(12px);padding:13px 30px;border-radius:100px;font-size:17px;font-weight:700;letter-spacing:0.3px;color:#fff;margin-bottom:36px}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:#FFD700;flex-shrink:0}
+.hero-title{font-size:clamp(36px,6vw,74px);font-weight:900;line-height:1.15;letter-spacing:-0.03em;margin-bottom:28px;color:#fff}
+.hero-sub{font-size:clamp(16px,2vw,21px);line-height:1.7;color:rgba(255,255,255,0.8);margin-bottom:48px}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:#fff;color:var(--son-navy);border-radius:100px;font-size:17px;font-weight:700;box-shadow:0 8px 32px rgba(0,0,0,0.25);transition:var(--transition)}
+.btn-primary:hover{background:var(--son-navy);color:#fff;transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.4);color:#fff;border-radius:100px;font-size:17px;font-weight:600;backdrop-filter:blur(10px);transition:var(--transition)}
+.btn-outline:hover{background:rgba(255,255,255,0.2)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:2px;animation:bounce 2.5s infinite}
+.hero-scroll-arrow{width:18px;height:18px;border-right:2px solid rgba(255,255,255,0.35);border-bottom:2px solid rgba(255,255,255,0.35);transform:rotate(45deg)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ── Hero Side Badge ── */
+.hero-side-badge{position:absolute;left:48px;bottom:120px;z-index:2;background:rgba(255,255,255,0.10);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:24px 28px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:130px}
+.hero-side-year{font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
+.hero-side-line{display:none}
+.hero-side-num{font-size:52px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.04em}
+.hero-side-num span{font-size:20px;font-weight:700;color:rgba(255,255,255,0.75)}
+.hero-side-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);line-height:1.6;margin-top:6px}
+.hero-side-badge::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);border-radius:20px 20px 0 0}
+@media(max-width:900px){.hero-side-badge{display:none}}
+
+/* ── Stats ── */
+.stats-bar{background:var(--son-navy);padding:36px 0}
+.stats-inner{display:flex;justify-content:center;flex-wrap:wrap}
+.stat-item{text-align:center;padding:16px 52px;border-right:1px solid rgba(255,255,255,0.12)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-size:40px;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1}
+.stat-num span{font-size:18px;font-weight:600;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:8px;font-weight:500}
+@media(max-width:768px){.stat-item{padding:12px 20px;min-width:33.3%}}.stat-item:nth-child(3n){border-right:none}
+@media(max-width:480px){.stat-item{min-width:50%}}
+
+/* ── Section Header ── */
+.section-header{text-align:center;margin-bottom:60px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:3px;color:var(--son-s);text-transform:uppercase;margin-bottom:14px}
+.eyebrow.green{color:var(--son-o)}.eyebrow.blue{color:var(--son-n)}
+.section-title{font-size:clamp(26px,4vw,42px);font-weight:800;line-height:1.25;color:var(--son-navy);letter-spacing:-0.025em;margin-bottom:18px}
+.section-lead{font-size:17px;line-height:1.8;color:var(--color-text-light);max-width:640px;margin:0 auto}
+@media(max-width:768px){.section-lead{font-size:15px}.section-header{margin-bottom:40px}}
+
+/* ── SON Cards ── */
+.son-section{background:#F8F9FB}
+.son-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.son-card{background:#fff;border-radius:var(--radius-lg);padding:40px 32px;box-shadow:var(--shadow-sm);transition:var(--transition);border:1px solid var(--color-border)}
+.son-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.son-letter{font-size:68px;font-weight:900;line-height:1;margin-bottom:14px;letter-spacing:-0.04em}
+.son-letter.s{color:var(--son-s)}.son-letter.o{color:var(--son-o)}.son-letter.n{color:var(--son-n)}
+.son-word{font-size:13px;font-weight:700;color:var(--color-text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.son-title{font-size:19px;font-weight:800;color:var(--son-navy);margin-bottom:12px}
+.son-desc{font-size:15px;line-height:1.8;color:var(--color-text-light)}
+@media(max-width:768px){.son-grid{grid-template-columns:1fr;gap:16px}.son-card{padding:28px 24px}.son-letter{font-size:52px}}
+
+/* ── Trust ── */
+.trust-section{background:#fff;padding:60px 0}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.trust-card{background:#F8F9FB;border-radius:var(--radius-md);padding:28px 20px;text-align:center;border:1px solid var(--color-border)}
+.trust-icon{font-size:30px;margin-bottom:12px}
+.trust-label{font-size:12px;font-weight:600;color:var(--color-text-muted);margin-bottom:6px}
+.trust-val{font-size:16px;font-weight:800;color:var(--son-navy);line-height:1.4}
+@media(max-width:900px){.trust-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Doctors ── */
+.doctors-section{background:linear-gradient(180deg,#fff 0%,#F8F9FB 100%)}
+.doctors-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.doctor-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);transition:var(--transition)}
+.doctor-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.doctor-photo-wrap{position:relative;overflow:hidden;height:500px;display:flex;align-items:flex-start;justify-content:center}
+.doctor-photo{width:100%;height:100%;object-fit:contain;object-position:top center;transition:transform 0.5s ease}
+.doctor-card:hover .doctor-photo{transform:scale(1.03)}
+.doctor-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,20,33,0.85) 0%,transparent 50%);padding:24px}
+.doctor-name{font-size:22px;font-weight:800;color:#fff}
+.doctor-role{font-size:13px;color:rgba(255,255,255,0.7)}
+.doctor-info{padding:28px}
+.doctor-tagline{font-size:15px;line-height:1.7;color:var(--color-text-light);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--color-border);font-style:italic}
+.credentials{display:flex;flex-direction:column;gap:8px}
+.cred{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--color-text)}
+.cred-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.cred-dot.s{background:var(--son-s)}.cred-dot.o{background:var(--son-o)}.cred-dot.n{background:var(--son-n)}
+.awards{margin-top:20px;padding-top:20px;border-top:1px solid var(--color-border);display:flex;flex-wrap:wrap;gap:8px}
+.award{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(237,72,36,0.06);color:var(--son-navy);border:1px solid rgba(237,72,36,0.15)}
+@media(max-width:900px){.doctors-grid{grid-template-columns:1fr;gap:24px}.doctor-photo-wrap{height:400px}}
+
+/* ── TEETH Values (밝은 배경) ── */
+.values-section{background:#F8F9FB}
+.values-inner{display:flex;gap:72px;align-items:center}
+.values-left{flex:1;min-width:260px}
+.val-title{color:var(--son-navy);font-size:clamp(26px,4vw,40px);font-weight:800;line-height:1.25;letter-spacing:-0.025em;margin-bottom:8px}
+.val-lead{color:var(--color-text-light);font-size:15px;line-height:1.8;margin-top:12px}
+.values-right{flex:1.3}
+.values-list{display:flex;flex-direction:column;gap:14px}
+.val-item{display:flex;align-items:flex-start;gap:18px;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-md);padding:18px 22px;transition:var(--transition)}
+.val-item:hover{box-shadow:var(--shadow-md);border-color:transparent}
+.val-letter{font-size:30px;font-weight:900;line-height:1;min-width:34px}
+.vl-t1{color:var(--son-s)}.vl-e1{color:var(--son-o)}.vl-e2{color:var(--son-n)}.vl-t2{color:#7C3AED}.vl-h{color:#F59E0B}
+.val-word{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--color-text-muted);text-transform:uppercase;margin-bottom:3px}
+.val-text{font-size:15px;font-weight:600;color:var(--son-navy)}
+.val-desc{font-size:13px;color:var(--color-text-light);margin-top:3px}
+@media(max-width:900px){.values-inner{flex-direction:column;gap:40px}.values-left{min-width:unset}}
+
+/* ── Programs ── */
+.programs-section{background:#fff}
+.prog-row{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;min-height:480px;margin-bottom:0;border-bottom:1px solid var(--color-border)}
+.prog-row:last-child{border-bottom:none}
+.prog-row.reverse .prog-photo{order:2}
+.prog-row.reverse .prog-info{order:1}
+.prog-photo{overflow:hidden;height:480px}
+.prog-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.prog-row:hover .prog-photo img{transform:scale(1.04)}
+.prog-info{padding:60px 64px}
+.prog-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:0.5px;margin-bottom:20px;border:1.5px solid}
+.prog-tag.bto{color:var(--son-s);border-color:var(--son-s);background:rgba(237,72,36,0.06)}
+.prog-tag.momki{color:var(--son-o);border-color:var(--son-o);background:rgba(88,184,71,0.06)}
+.prog-tag.plant{color:var(--son-n);border-color:var(--son-n);background:rgba(0,162,232,0.06)}
+.prog-title{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--son-navy);line-height:1.25;letter-spacing:-0.025em;margin-bottom:16px}
+.prog-desc{font-size:16px;line-height:1.9;color:var(--color-text-light);margin-bottom:28px}
+.prog-points{display:flex;flex-direction:column;gap:10px}
+.prog-point{display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:500;color:var(--color-text);line-height:1.7}
+.prog-point::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:8px}
+.prog-point.s::before{background:var(--son-s)}
+.prog-point.o::before{background:var(--son-o)}
+.prog-point.n::before{background:var(--son-n)}
+.bto-items{display:flex;flex-direction:column;gap:20px}
+.bto-item{padding:18px 20px;background:#F8F9FB;border-radius:var(--radius-md);border-left:3px solid currentColor}
+.bto-label{font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-0.01em}
+.bto-label span{font-size:13px;font-weight:600;margin-left:8px;opacity:0.75}
+.bto-desc{font-size:14px;color:var(--color-text-light);line-height:1.75;margin:0}
+@media(max-width:900px){
+  .prog-row{grid-template-columns:1fr;min-height:auto}
+  .prog-row.reverse .prog-photo{order:0}
+  .prog-row.reverse .prog-info{order:1}
+  .prog-photo{height:280px}
+  .prog-info{padding:36px 24px}
+}
+
+/* ── Treatments ── */
+.treatments-section{background:#F8F9FB}
+.treat-block{background:#fff;border-radius:var(--radius-lg);padding:60px;margin-bottom:40px;box-shadow:var(--shadow-sm);border:1px solid var(--color-border)}
+.treat-block:last-child{margin-bottom:0}
+.treat-block-header{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.treat-block-num{font-size:13px;font-weight:700;color:var(--color-text-muted);letter-spacing:2px}
+.treat-block-title{font-size:clamp(20px,2.5vw,28px);font-weight:800;color:var(--son-navy)}
+.treat-img{width:100%;object-fit:contain;border-radius:var(--radius-md)}
+.treat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:60px}
+.treat-card{background:#F8F9FB;border-radius:var(--radius-md);padding:18px 16px;text-align:center;border:1px solid var(--color-border)}
+.treat-icon{width:48px;height:48px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center}
+.treat-icon svg{width:48px;height:48px}
+.treat-name{font-weight:700;color:var(--son-navy);font-size:15px}
+.treat-sub{font-size:12px;color:var(--color-text-muted);margin-top:4px}
+.treat-cat-section{margin-bottom:0}
+.treat-cat-section+.treat-cat-section{margin-top:80px;padding-top:80px;border-top:1px solid var(--color-border)}
+.treat-cat-header{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:40px;padding-bottom:28px;border-bottom:2.5px solid var(--son-navy)}
+.treat-cat-tag{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:rgba(26,41,66,0.08);color:var(--son-navy);padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:10px}
+.treat-cat-title{font-size:clamp(22px,2.6vw,32px);font-weight:900;color:var(--son-navy)}
+.treat-cat-desc{font-size:15px;color:var(--color-text-light);line-height:1.8;text-align:right;flex-shrink:0;max-width:280px;padding-top:6px;word-break:keep-all}
+@media(max-width:768px){.treat-block{padding:32px 20px}}
+
+/* ── Promise Mini (between trust & doctors) ── */
+.promise-mini{background:var(--son-navy);overflow:hidden}
+.promise-mini-layout{display:grid;grid-template-columns:1fr 1fr;min-height:680px}
+.promise-mini-photo{position:relative;overflow:hidden}
+.promise-mini-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0.75}
+.promise-mini-right{padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
+.promise-mini-eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;display:block;margin-bottom:12px}
+.promise-mini-title{font-size:clamp(22px,2.5vw,32px);font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:40px}
+.promise-mini-title em{font-style:normal;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.promise-mini-list{display:flex;flex-direction:column;gap:0}
+.promise-mini-item{display:flex;align-items:baseline;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.promise-mini-item:first-child{border-top:1px solid rgba(255,255,255,0.08)}
+.promise-mini-num{font-size:12px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:1px;white-space:nowrap;min-width:24px}
+.promise-mini-text{font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#fff;line-height:1.6;word-break:keep-all}
+.promise-mini-text em{font-style:normal;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(max-width:900px){.promise-mini-layout{grid-template-columns:1fr}.promise-mini-photo{height:320px}.promise-mini-right{padding:48px 28px}}
+
+/* ── Promises Carousel ── */
+.promises-section{background:var(--son-navy)}
+.promises-section .section-header{padding:100px 0 60px}
+.promises-section .section-header .eyebrow{color:rgba(255,255,255,0.55)}
+.promises-section .section-title{color:#fff}
+.promises-section .section-lead{color:rgba(255,255,255,0.6)}
+.promise-group{display:grid;grid-template-columns:1fr 1fr}
+.promise-group-img{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--son-dark)}
+.promise-group-img img{width:100%;height:100%;object-fit:cover;opacity:0.45;display:block}
+.promise-group-texts{display:flex;flex-direction:column}
+.promise-item{display:flex;align-items:center;padding:80px 72px;min-height:380px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.promise-item:first-child{border-top:1px solid rgba(255,255,255,0.08)}
+.promise-inner{max-width:460px}
+.promise-num{font-size:80px;font-weight:900;line-height:1;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:22px}
+.promise-text{font-size:clamp(20px,2.2vw,28px);font-weight:700;color:#fff;line-height:1.65;word-break:keep-all}
+.promise-em{font-style:normal;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(max-width:900px){
+  .promise-group{grid-template-columns:1fr}
+  .promise-group-img{position:relative;height:280px;top:auto}
+  .promise-item{padding:40px 24px;min-height:auto}
+}
+
+/* ── Gallery ── */
+.gallery-section{background:#fff}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:260px 200px;gap:14px}
+.gal-item{border-radius:var(--radius-md);overflow:hidden;position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-item.wide{grid-column:span 2}
+.gal-cap{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);color:#fff;font-size:13px;font-weight:600;opacity:0;transition:var(--transition)}
+.gal-item:hover .gal-cap{opacity:1}
+@media(max-width:700px){.gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gal-item,.gal-item img{height:160px}.gal-item.wide{grid-column:span 2}}
+@media(max-width:460px){.gal-grid{grid-template-columns:1fr;gap:10px}.gal-item.wide{grid-column:span 1}}
+
+/* ── Testimonials (텍스트 전용) ── */
+.testimonials-section{background:linear-gradient(135deg,#F8F9FB,#EEF2FF)}
+.test-quote-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.test-quote-card{background:#fff;border-radius:var(--radius-lg);padding:40px 36px;border:1px solid var(--color-border);position:relative;transition:var(--transition);overflow:hidden}
+.test-quote-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.test-quote-mark{font-size:120px;line-height:0.75;font-family:Georgia,serif;color:var(--son-s);opacity:0.07;position:absolute;top:16px;left:20px;font-weight:900;pointer-events:none}
+.test-quote-text{font-size:17px;line-height:1.9;color:var(--color-text);position:relative;z-index:1;margin-bottom:28px}
+.test-quote-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.test-quote-author{font-size:15px;font-weight:700;color:var(--son-navy)}
+.test-quote-years{display:inline-block;font-size:12px;font-weight:600;background:rgba(26,41,66,0.07);color:var(--son-navy);padding:4px 12px;border-radius:100px}
+@media(max-width:768px){.test-quote-grid{grid-template-columns:1fr}.test-quote-card{padding:28px 24px}.test-quote-text{font-size:15px}}
+
+/* ── History (배경만) ── */
+.history-section{position:relative;min-height:380px;background-image:url('images/history-wall.jpg');background-size:cover;background-position:center;overflow:hidden;display:flex;align-items:center}
+.hist-overlay{position:absolute;inset:0;background:rgba(13,20,33,0.65)}
+.hist-content{position:relative;z-index:1;padding:80px 24px;text-align:center;width:100%}
+.hist-title{color:#fff;font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-0.025em;margin-bottom:16px}
+.hist-lead{color:rgba(255,255,255,0.7);font-size:16px;max-width:560px;margin:0 auto}
+
+/* ── Location ── */
+.location-section{background:#F8F9FB}
+.loc-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+.loc-title{font-size:26px;font-weight:800;color:var(--son-navy);margin-bottom:28px}
+.loc-rows{display:flex;flex-direction:column;gap:18px;margin-bottom:28px}
+.loc-row{display:flex;gap:14px;align-items:flex-start}
+.loc-icon{width:38px;height:38px;border-radius:10px;background:var(--gradient-son);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.loc-lbl{font-size:11px;font-weight:700;color:var(--color-text-muted);margin-bottom:2px;letter-spacing:0.5px}
+.loc-val{font-size:15px;color:var(--color-text);line-height:1.6}
+.hours-box{background:#fff;border-radius:var(--radius-md);padding:18px;border:1px solid var(--color-border);display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.hr-row{font-size:14px;color:var(--color-text);padding:4px 0}
+.hr-day{font-weight:600;color:var(--son-navy)}
+.hr-night{color:var(--son-s);font-weight:700}
+.map-wrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/3;background:#e0e0e0}
+.map-wrap iframe{width:100%;height:100%;border:0}
+@media(max-width:900px){.loc-inner{grid-template-columns:1fr;gap:36px}}
+
+/* ── CTA ── */
+.cta-section{background:var(--gradient-son);padding:72px 0;text-align:center}
+.cta-section h2{font-size:clamp(22px,4vw,38px);font-weight:800;color:#fff;margin-bottom:14px}
+.cta-section p{font-size:17px;color:rgba(255,255,255,0.85);margin-bottom:36px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{display:inline-flex;align-items:center;gap:8px;padding:15px 34px;background:#fff;color:var(--son-navy);border-radius:100px;font-size:16px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.2);transition:var(--transition)}
+.btn-white:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border:2px solid rgba(255,255,255,0.65);color:#fff;border-radius:100px;font-size:16px;font-weight:600;transition:var(--transition)}
+.btn-ghost:hover{background:rgba(255,255,255,0.15)}
+
+/* ── Footer ── */
+.footer{background:var(--son-dark);color:rgba(255,255,255,0.6);padding:56px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.ft-brand{font-size:19px;font-weight:800;color:#fff;margin-bottom:6px}
+.ft-brand .s{color:var(--son-s)}.ft-brand .o{color:var(--son-o)}.ft-brand .n{color:var(--son-n)}
+.ft-tag{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:18px}
+.ft-col h4{font-size:12px;font-weight:700;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:13px;color:rgba(255,255,255,0.5)}
+.ft-col a:hover{color:#fff}
+.ft-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+@media(max-width:680px){.footer-grid{grid-template-columns:1fr;gap:28px}.ft-bottom{flex-direction:column;align-items:flex-start}}
+
+/* ── Popup ── */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px}
+.popup-overlay.hidden{display:none}
+.popup-box{background:#fff;border-radius:var(--radius-lg);max-width:580px;width:100%;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.3);position:relative}
+.popup-placeholder{width:100%;min-height:280px;background:var(--gradient-son);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:40px;text-align:center}
+.popup-placeholder h3{font-size:26px;font-weight:900;color:#fff}
+.popup-placeholder p{font-size:15px;color:rgba(255,255,255,0.85)}
+.popup-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,0.5);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.popup-x:hover{background:rgba(0,0,0,0.8)}
+.popup-foot{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;background:#f8f9fb}
+.popup-today-lbl{font-size:13px;color:var(--color-text-light);cursor:pointer}
+
+/* ── Admin ── */
+.admin-btn-float{position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;background:var(--son-navy);color:#fff;font-size:20px;z-index:8000;display:none;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 4px 16px rgba(0,0,0,0.25)}
+.admin-btn-float.unlocked{display:flex}
+.admin-btn-float:hover{background:var(--son-s);transform:rotate(30deg)}
+.admin-panel{position:fixed;right:-400px;bottom:0;top:0;width:360px;background:#fff;z-index:9500;box-shadow:-8px 0 40px rgba(0,0,0,0.15);transition:right 0.4s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;padding:28px 20px}
+.admin-panel.open{right:0}
+.admin-panel h3{font-size:17px;font-weight:800;color:var(--son-navy);margin-bottom:20px}
+.admin-close-btn{position:absolute;top:20px;right:20px;font-size:20px;color:var(--color-text-muted);cursor:pointer}
+.a-group{margin-bottom:24px}
+.a-group label{display:block;font-size:13px;font-weight:700;color:var(--color-text);margin-bottom:6px}
+.a-group input[type=file]{width:100%;padding:9px;border:2px dashed var(--color-border);border-radius:var(--radius-sm);font-size:13px;color:var(--color-text-muted)}
+.a-check-row{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--color-text);margin-bottom:6px;cursor:pointer}
+.a-btn{display:block;width:100%;padding:12px;background:var(--son-navy);color:#fff;border-radius:var(--radius-sm);font-size:14px;font-weight:700;margin-top:6px;transition:var(--transition)}
+.a-btn:hover{background:var(--son-s)}
+.a-btn.red{background:#ef4444}.a-btn.red:hover{background:#dc2626}
+.a-preview{width:100%;height:110px;object-fit:cover;border-radius:var(--radius-sm);margin-top:8px;display:none}
+
+/* ── Float Tel ── */
+.float-tel{position:fixed;right:24px;bottom:36px;display:flex;align-items:center;gap:9px;background:var(--son-s);color:#fff;padding:11px 22px;border-radius:100px;font-size:15px;font-weight:700;box-shadow:0 8px 24px rgba(237,72,36,0.4);z-index:8000;transition:var(--transition)}
+.float-tel:hover{background:#d43d1a;transform:translateY(-2px)}
+@media(max-width:480px){.float-tel{right:14px;bottom:18px;padding:9px 16px;font-size:13px}}
+
+/* ── Animations ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}.no-js .fade-in{opacity:1;transform:none}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+</style>
+</head>
+<body>
+<noscript><style>.fade-in{opacity:1!important;transform:none!important}</style></noscript>
+
+<!-- POPUP -->
+<div class="popup-overlay hidden" id="popupOverlay">
+  <div class="popup-box">
+    <div class="popup-img-wrap">
+      <div id="popupContent">
+        <div class="popup-placeholder">
+          <h3>🏆 보건복지부장관상 수상</h3>
+          <p>우리곁, 진료잘하는 연세손치과의원<br>임플란트 10,000케이스 경험의 전문의료팀</p>
+        </div>
+      </div>
+      <div class="popup-x" onclick="closePopup()">✕</div>
+    </div>
+    <div class="popup-foot">
+      <label class="popup-today-lbl"><input type="checkbox" id="todayChk" onchange="checkToday()"> &nbsp;오늘 하루 보지 않기</label>
+      <button onclick="closePopup()" style="font-size:13px;color:var(--color-text-muted);cursor:pointer">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<button class="admin-btn-float" onclick="toggleAdmin()" title="관리자">⚙️</button>
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-close-btn" onclick="toggleAdmin()">✕</div>
+  <h3>⚙️ 관리자 설정</h3>
+  <div class="a-group">
+    <label>팝업 활성화</label>
+    <label class="a-check-row"><input type="checkbox" id="popupEnabled" onchange="saveEnabled()"> &nbsp;사이트 접속 시 팝업 표시</label>
+  </div>
+  <div class="a-group">
+    <label>팝업 이미지</label>
+    <small style="color:var(--color-text-muted);font-size:12px;display:block;margin-bottom:6px">권장: 580×360px 이상 JPG/PNG</small>
+    <input type="file" accept="image/*" id="popupFile" onchange="previewImg('popup')">
+    <img id="popupPrev" class="a-preview">
+    <button class="a-btn" onclick="saveImg('popup')">팝업 이미지 저장</button>
+    <button class="a-btn red" onclick="clearImg('popup')" style="margin-top:5px">이미지 초기화</button>
+  </div>
+  <div class="a-group">
+    <label>히어로 배경 이미지</label>
+    <input type="file" accept="image/*" id="heroFile" onchange="previewImg('hero')">
+    <img id="heroPrev" class="a-preview">
+    <button class="a-btn" onclick="saveImg('hero')">히어로 이미지 저장</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <img src="images/logo-white-bg.png" alt="연세손치과의원 로고" style="height:52px;object-fit:contain;display:block">
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#about" class="nav-link" data-section="about">병원소개</a>
+      <a href="#doctors" class="nav-link" data-section="doctors">의료진</a>
+      <div class="nav-drop">
+        <a href="#treatments" class="nav-link nav-drop-btn" data-section="treatments">진료과목 <span class="arrow">▾</span></a>
+        <div class="nav-drop-menu">
+          <a href="#treat-general">일반 진료</a>
+          <a href="#treat-implant">임플란트 치료</a>
+          <a href="#treat-ortho">교정 클리닉</a>
+          <a href="#treat-aesthetic">심미 클리닉</a>
+          <a href="#treat-special">특수 클리닉</a>
+        </div>
+      </div>
+      <a href="#programs" class="nav-link" data-section="programs">특화프로그램</a>
+      <a href="#reviews" class="nav-link" data-section="reviews">환자후기</a>
+      <a href="#location" class="nav-link" data-section="location">오시는길</a>
+      <a href="tel:032-505-2868" class="nav-cta">📞 032-505-2868</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <!-- 좌측 13년 강조 -->
+  <div class="hero-side-badge">
+    <div class="hero-side-year">SINCE 2011</div>
+    <div class="hero-side-num">13<span>년+</span></div>
+    <div class="hero-side-label">부평 지역<br>전문 치과</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="hero-badge-dot"></span>🏆 보건복지부장관상 수상 · 임플란트 10,000케이스</div>
+    <h1 class="hero-title">우리 곁,<br>진료 잘하는<br>연세손치과의원</h1>
+    <p class="hero-sub">연세대학교 치과대학 출신 전문의료진이<br>가족처럼 정성껏 진료합니다</p>
+    <div class="hero-actions">
+      <a href="tel:032-505-2868" class="btn-primary">📞 지금 예약 전화</a>
+      <a href="#about" class="btn-outline">병원 소개 보기</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>SCROLL</span><div class="hero-scroll-arrow"></div></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-label">임플란트 시술 케이스</div>
+      <div class="stat-num">12,000<span>+</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">부평 지역 진료 경력</div>
+      <div class="stat-num">13<span>년+</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">보건복지부장관상·시장표창</div>
+      <div class="stat-num">2<span>회</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">기공소 직접 운영</div>
+      <div class="stat-num"><span style="-webkit-text-fill-color:#fff;background:none;font-size:22px">자체</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">SCI·학술지 논문 게재</div>
+      <div class="stat-num">8<span>편+</span></div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">세브란스병원 외래교수 재직</div>
+      <div class="stat-num"><span style="-webkit-text-fill-color:#fff;background:none;font-size:22px;font-weight:800">✓</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- S.O.N -->
+<section class="section son-section" id="about">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow">Our Brand</span>
+      <h2 class="section-title">연세손치과의 브랜드 철학</h2>
+      <p class="section-lead">"SON"은 단순한 성씨가 아닙니다. 환자 여러분께 드리는 세 가지 약속입니다.</p>
+    </div>
+    <div class="son-grid">
+      <div class="son-card fade-in d1">
+        <div class="son-letter s">S</div>
+        <div class="son-word">Skillful</div>
+        <div class="son-title">손기술 좋은 치과</div>
+        <p class="son-desc">연세대 치과대학 졸업 후 세브란스병원 수련을 거친 전문의가 통합적 진료와 자연치아 보존을 최우선으로, 정석대로 치료합니다.</p>
+      </div>
+      <div class="son-card fade-in d2">
+        <div class="son-letter o">O</div>
+        <div class="son-word">One of the best</div>
+        <div class="son-title">손에 꼽는 치과</div>
+        <p class="son-desc">독자적 진료 매뉴얼과 환자 중심의 최적 치료. 아픔↓ 시간↓ 비용↓, 정확성↑ 기능↑ 만족도↑의 3DOWN 3UP을 실현합니다.</p>
+      </div>
+      <div class="son-card fade-in d3">
+        <div class="son-letter n">N</div>
+        <div class="son-word">Neighborly</div>
+        <div class="son-title">손 내미는 치과</div>
+        <p class="son-desc">지역사회와 함께 성장하는 치과. 언제나 먼저 손 내밀고, 이웃처럼 다가가는 따뜻한 치료를 약속드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-card fade-in d1"><div class="trust-icon">🏆</div><div class="trust-label">정부 공인</div><div class="trust-val">보건복지부<br>장관상 수상</div></div>
+      <div class="trust-card fade-in d2"><div class="trust-icon">🎓</div><div class="trust-label">학력·수련</div><div class="trust-val">연세대 치과대학<br>세브란스병원 수련</div></div>
+      <div class="trust-card fade-in d3"><div class="trust-icon">📋</div><div class="trust-label">전문 자격</div><div class="trust-val">통합치의학<br>전문의 취득</div></div>
+      <div class="trust-card fade-in d4"><div class="trust-icon">🔬</div><div class="trust-label">학술 연구</div><div class="trust-val">SCI급 논문<br>게재·학회 발표</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE MINI -->
+<section class="promise-mini">
+  <div class="promise-mini-layout">
+    <div class="promise-mini-photo fade-in">
+      <img src="images/promise-female.png" alt="환자와의 약속">
+    </div>
+    <div class="promise-mini-right fade-in d1">
+      <span class="promise-mini-eyebrow">Patient Promise</span>
+      <h2 class="promise-mini-title">환자와의 <em>여섯 가지 약속</em></h2>
+      <div class="promise-mini-list">
+        <div class="promise-mini-item">
+          <span class="promise-mini-num">01</span>
+          <p class="promise-mini-text"><em>가족</em>을 대하듯이 정성을 다하겠습니다</p>
+        </div>
+        <div class="promise-mini-item">
+          <span class="promise-mini-num">02</span>
+          <p class="promise-mini-text">치료 후 <em>억울한 일</em>이 생기지 않도록 하겠습니다</p>
+        </div>
+        <div class="promise-mini-item">
+          <span class="promise-mini-num">03</span>
+          <p class="promise-mini-text">믿고 따를 수 있는 <em>신뢰</em>를 드리겠습니다</p>
+        </div>
+        <div class="promise-mini-item">
+          <span class="promise-mini-num">04</span>
+          <p class="promise-mini-text">불필요한 <em>과잉 진료</em>를 하지 않겠습니다</p>
+        </div>
+        <div class="promise-mini-item">
+          <span class="promise-mini-num">05</span>
+          <p class="promise-mini-text">올바르고 효율적인 <em>미래를 내다보는 치료계획</em>을 설정하겠습니다</p>
+        </div>
+        <div class="promise-mini-item">
+          <span class="promise-mini-num">06</span>
+          <p class="promise-mini-text"><em>최첨단 의술</em>로 믿고 맡길 수 있는 병원이 되겠습니다</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="section doctors-section" id="doctors">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow green">Medical Team</span>
+      <h2 class="section-title">의료진 소개</h2>
+      <p class="section-lead">연세대학교 치과대학을 졸업하고 세브란스병원에서 수련한 두 분의 전문의가 직접 진료합니다.</p>
+    </div>
+    <div class="doctors-grid">
+      <!-- 서지선 원장 (왼쪽) -->
+      <div class="doctor-card fade-in d1">
+        <div class="doctor-photo-wrap">
+          <img src="images/원장서지선.png" alt="서지선 원장" class="doctor-photo" style="object-fit:cover;object-position:top center">
+          <div class="doctor-overlay">
+            <div class="doctor-name">서지선 원장</div>
+            <div class="doctor-role">통합치의학 전문의 · 세브란스병원 외래교수</div>
+          </div>
+        </div>
+        <div class="doctor-info">
+          <p class="doctor-tagline">"섬세한 손끝과 따뜻한 마음으로, 환자 한 분 한 분이 편안하게 웃으며 돌아가실 수 있도록 최선을 다합니다."</p>
+          <div class="credentials">
+            <div class="cred"><div class="cred-dot s"></div><span>연세대학교 치과대학 졸업</span></div>
+            <div class="cred"><div class="cred-dot s"></div><span>연세대학교 신촌 세브란스 치과대학병원 통합치의학과 수료</span></div>
+            <div class="cred"><div class="cred-dot s"></div><span>보건복지부 인준 통합치의학과 전문의</span></div>
+            <div class="cred"><div class="cred-dot o"></div><span>연세대학교 신촌 세브란스 치과대학병원 외래교수</span></div>
+            <div class="cred"><div class="cred-dot o"></div><span>대한 구강악안면임플란트학회 정회원</span></div>
+            <div class="cred"><div class="cred-dot o"></div><span>KDI(한국심는치아연구회) · 연세 임플란트연구회 정회원</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>대한 통합치의학회 · 노년치의학회 · 대한 레이저학회 표준숙련과정 수료</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>Invisalign(투명교정) Course 수료</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>前 임플란티아치과 광명점 원장</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>前 큐프라임치과 가산점 대표원장</span></div>
+          </div>
+          <div class="awards">
+            <span class="award">🏅 대한마취과학회 우수포스터상</span>
+            <span class="award">📄 유럽임플란트학회(EAO) 발표</span>
+            <span class="award">📄 연세국제치의학 학술대회 포스터 동상</span>
+          </div>
+        </div>
+      </div>
+      <!-- 손기요 대표원장 (오른쪽) -->
+      <div class="doctor-card fade-in d2">
+        <div class="doctor-photo-wrap">
+          <img src="images/원장손기요.png" alt="손기요 대표원장" class="doctor-photo" style="object-fit:cover;object-position:top center">
+          <div class="doctor-overlay">
+            <div class="doctor-name">손기요 대표원장</div>
+            <div class="doctor-role">통합치의학 전문의 · 임플란트 10,000케이스</div>
+          </div>
+        </div>
+        <div class="doctor-info">
+          <p class="doctor-tagline">"임플란트 10,000케이스 이상의 임상 경험을 바탕으로, 연세대가 가르쳐준 정석대로 환자 한 분 한 분께 최선을 다합니다."</p>
+          <div class="credentials">
+            <div class="cred"><div class="cred-dot s"></div><span>연세대학교 치과대학 졸업</span></div>
+            <div class="cred"><div class="cred-dot s"></div><span>연세대학교 신촌 세브란스 치과대학병원 통합치의학과 수료</span></div>
+            <div class="cred"><div class="cred-dot s"></div><span>보건복지부 인준 통합치의학과 전문의</span></div>
+            <div class="cred"><div class="cred-dot o"></div><span>연세대학교 임상지도교수 겸임</span></div>
+            <div class="cred"><div class="cred-dot o"></div><span>연세대학교 치과대학 박사과정</span></div>
+            <div class="cred"><div class="cred-dot o"></div><span>대한 구강악안면임플란트학회 정회원</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>미국 임플란트 학회(AAID) 정회원</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>KDI(한국심는치과연구회) 정회원</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>연세 임플란트연구회 · 대한 통합치의학회 · 치과보철학회 · 심미치과학회 · 치주학회 · 노년치의학회 정회원</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>통합치의학회 총무이사</span></div>
+            <div class="cred"><div class="cred-dot n"></div><span>Invisalign(투명교정) Course 수료</span></div>
+          </div>
+          <div class="awards">
+            <span class="award">🏆 보건복지부장관상 2018</span>
+            <span class="award">🏅 인천광역시장 표창 2017</span>
+            <span class="award">📄 통합치의 학회지 SCI 논문 연재</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEETH VALUES (밝은 배경) -->
+<section class="section values-section">
+  <div class="container">
+    <div class="values-inner">
+      <div class="values-left fade-in">
+        <span class="eyebrow" style="color:var(--son-o)">Core Values</span>
+        <h2 class="val-title">핵심가치<br><span style="background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">T.E.E.T.H</span></h2>
+        <p class="val-lead">연세손치과는 이 다섯 가지 가치로 진료합니다.<br>매일 실천하는 우리의 약속입니다.</p>
+      </div>
+      <div class="values-right fade-in d1">
+        <div class="values-list">
+          <div class="val-item"><div class="val-letter vl-t1">T</div><div><div class="val-word">Total Dentistry</div><div class="val-text">통합 — 통합치의학 전문의 기반 진료</div><div class="val-desc">전체 치료계획과 시기별 최적 치료를 한 곳에서</div></div></div>
+          <div class="val-item"><div class="val-letter vl-e1">E</div><div><div class="val-word">Excellence</div><div class="val-text">최적 — 최적의 치료만 제시</div><div class="val-desc">과잉진료 없이 꼭 필요한 치료만 권유합니다</div></div></div>
+          <div class="val-item"><div class="val-letter vl-e2">E</div><div><div class="val-word">Execution</div><div class="val-text">정도 — 가이드대로 원칙 중심 진료</div><div class="val-desc">연세대가 가르쳐준 그대로, 정석대로 치료합니다</div></div></div>
+          <div class="val-item"><div class="val-letter vl-t2">T</div><div><div class="val-word">Tenacity</div><div class="val-text">끈기 — 끝까지 환자를 포기하지 않음</div><div class="val-desc">철저한 A/S 사후관리로 오랜 관계를 이어갑니다</div></div></div>
+          <div class="val-item"><div class="val-letter vl-h">H</div><div><div class="val-word">Health</div><div class="val-text">건강 — 직원과 지역사회 건강에 기여</div><div class="val-desc">무료 틀니·임플란트 제공 등 지역사회 공헌</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS (3개) -->
+<section class="section programs-section" id="programs">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow blue">Special Programs</span>
+      <h2 class="section-title">연세손치과 특화 프로그램</h2>
+      <p class="section-lead">일반 치과와는 다른, 연세손치과만의 세 가지 특별한 프로그램입니다.</p>
+    </div>
+    <div class="programs-list">
+      <div class="prog-row fade-in">
+        <div class="prog-photo">
+          <img src="images/bto-clinic.jpg" alt="BTO Clinic" onerror="this.src='images/clinic3.jpg'">
+        </div>
+        <div class="prog-info">
+          <span class="prog-tag bto">BTO Clinic®</span>
+          <img src="images/bto-logo.png" alt="BTO Clinic 로고" style="height:56px;object-fit:contain;margin-bottom:16px;display:block">
+          <h3 class="prog-title">미백·턱관절·교정<br>전문 클리닉</h3>
+          <p class="prog-desc">연세손치과 3층에서 운영하는 전문 진료 공간입니다.<br>미백·턱관절·교정 세 가지 분야를 한 곳에서, 전문적으로 진료합니다.</p>
+          <div class="bto-items">
+            <div class="bto-item">
+              <div class="bto-label" style="color:var(--son-s)">B <span>Bleaching · 미백</span></div>
+              <p class="bto-desc">치아 변색·착색을 전문 약재로 밝고 자연스럽게 개선합니다. 오피스 미백과 홈 미백을 병행해 효과를 극대화합니다.</p>
+            </div>
+            <div class="bto-item">
+              <div class="bto-label" style="color:var(--son-o)">T <span>TMD · 턱관절 치료</span></div>
+              <p class="bto-desc">입을 벌릴 때 소리가 나거나 턱이 아프다면 TMD입니다. 정확한 원인 진단 후 스플린트·물리치료·보톡스 치료를 적용합니다.</p>
+            </div>
+            <div class="bto-item">
+              <div class="bto-label" style="color:var(--son-n)">O <span>Orthodontic · 교정</span></div>
+              <p class="bto-desc">Invisalign 투명교정·메탈교정·세라믹교정 등 개인 상황에 맞는 교정 방법을 제안합니다. 연세대 출신 전문의가 직접 진료합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-row reverse fade-in">
+        <div class="prog-info">
+          <span class="prog-tag momki">맘키룸 Mom Ki Room</span>
+          <h3 class="prog-title">육아맘을 위한<br>전용 키즈룸</h3>
+          <p class="prog-desc">엄마가 치료받는 동안 아이는 전용 맘키룸에서 안전하고 즐겁게!<br>엄마와 아이의 정기 치아건강을 함께 챙겨드립니다.</p>
+          <div class="bto-items">
+            <div class="bto-item" style="border-left-color:var(--son-o)">
+              <div class="bto-label" style="color:var(--son-o)">M <span>Mom &amp; Kid Space · 아이 전담 케어</span></div>
+              <p class="bto-desc">치료 중 아이만을 위한 독립된 안전 놀이 공간을 운영합니다. 아이는 걱정 없이 맡기고, 엄마는 편안하게 진료받으세요.</p>
+            </div>
+            <div class="bto-item" style="border-left-color:var(--son-o)">
+              <div class="bto-label" style="color:var(--son-o)">K <span>Key Program · 동반 방문 시스템</span></div>
+              <p class="bto-desc">엄마와 아이가 같은 시간에 함께 방문할 수 있습니다. 별도 보호자 없이도 아이 케어와 엄마 진료가 동시에 가능합니다.</p>
+            </div>
+            <div class="bto-item" style="border-left-color:var(--son-o)">
+              <div class="bto-label" style="color:var(--son-o)">R <span>Regular Check · 어린이 정기검진</span></div>
+              <p class="bto-desc">성장기 치아를 정기적으로 관리하는 어린이 검진 프로그램을 운영합니다. 충치 예방부터 교합 관리까지 함께 챙깁니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="prog-photo">
+          <img src="images/momki-room.jpg" alt="맘키룸">
+        </div>
+      </div>
+      <div class="prog-row fade-in">
+        <div class="prog-photo">
+          <img src="images/수술방2.jpg" alt="S.O.N Plant 임플란트 수술방">
+        </div>
+        <div class="prog-info">
+          <span class="prog-tag plant">S.O.N Plant®</span>
+          <h3 class="prog-title">연세손치과<br>임플란트 시스템</h3>
+          <p class="prog-desc">정확한 진단 → 꼭 필요한 부위만 → 고난도 정밀 치료 → 맞춤 설계.<br>12,000케이스 이상의 경험이 만드는 신뢰.</p>
+          <div class="bto-items">
+            <div class="bto-item" style="border-left-color:var(--son-n)">
+              <div class="bto-label" style="color:var(--son-n)">S <span>Safe Implant · 안전 진단</span></div>
+              <p class="bto-desc">정밀 CT 진단 후 꼭 필요한 부위만 정확하게 식립합니다. 과잉 시술 없이 최소 침습으로 환자 부담을 줄입니다.</p>
+            </div>
+            <div class="bto-item" style="border-left-color:var(--son-n)">
+              <div class="bto-label" style="color:var(--son-n)">O <span>Optimal Care · 아픔↓ 시간↓ 비용↓</span></div>
+              <p class="bto-desc">최소 절개 방식으로 회복이 빠르고 통증이 적습니다. 자체 기공소 운영으로 보철 제작 기간과 비용을 줄였습니다.</p>
+            </div>
+            <div class="bto-item" style="border-left-color:var(--son-n)">
+              <div class="bto-label" style="color:var(--son-n)">N <span>Natural Result · 정확성↑ 심미만족↑</span></div>
+              <p class="bto-desc">12,000케이스 이상의 임플란트 경험으로 자연치처럼 자연스럽고 기능적인 결과를 만들어냅니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="section treatments-section" id="treatments">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow">진료 안내</span>
+      <h2 class="section-title">진료 과목</h2>
+      <p class="section-lead">일반진료부터 임플란트, 교정, 특수 클리닉까지 통합적으로 진료합니다.</p>
+    </div>
+
+    <!-- ① 일반 진료 -->
+    <div class="treat-cat-section" id="treat-general">
+      <div class="treat-cat-header fade-in">
+        <div>
+          <span class="treat-cat-tag">GENERAL CARE</span>
+          <h3 class="treat-cat-title">일반 진료</h3>
+        </div>
+        <p class="treat-cat-desc">충치·신경치료·수복 등<br>치아를 끝까지 살리는 기본 진료</p>
+      </div>
+
+      <div class="treat-block fade-in">
+        <div class="treat-block-header">
+          <span class="treat-block-num">01</span>
+          <h3 class="treat-block-title">치경부 마모</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div>
+            <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">치아가 닳고 시린 증상</p>
+            <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">칫솔질, 산 부식, 교합력 등으로 치아 경부(잇몸 경계부)가 마모되어 시리고 파인 형태가 나타납니다. 레진으로 정밀하게 수복해 시린 증상을 없애고 치아를 보호합니다.</p>
+          </div>
+          <img src="images/치경부마모.png" alt="치경부 마모" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+        </div>
+      </div>
+
+      <div class="treat-block fade-in">
+        <div class="treat-block-header">
+          <span class="treat-block-num">02</span>
+          <h3 class="treat-block-title">신경치료</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div>
+            <p style="font-size:15px;color:var(--son-o);font-weight:700;margin-bottom:12px">자연치아를 끝까지 살립니다</p>
+            <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">충치가 깊어지거나 외상으로 치수(신경)가 손상되면 신경치료가 필요합니다. 감염된 치수를 완전히 제거하고 정밀하게 충전해, 자연치아를 최대한 보존합니다.</p>
+          </div>
+          <img src="images/신경치료.png" alt="신경치료" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+        </div>
+      </div>
+
+      <div class="treat-block fade-in">
+        <div class="treat-block-header">
+          <span class="treat-block-num">03</span>
+          <h3 class="treat-block-title">인레이</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div>
+            <p style="font-size:15px;color:var(--son-n);font-weight:700;margin-bottom:12px">치아 모양 그대로 정밀 수복</p>
+            <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">충치를 제거한 후 치아 형태에 맞게 도자기(세라믹)나 레진으로 제작한 보철물을 정확하게 끼워 넣는 방식입니다. 자연치와 색상이 비슷해 심미적으로도 우수합니다.</p>
+          </div>
+          <img src="images/인레이.png" alt="인레이" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+        </div>
+      </div>
+
+      <div class="treat-block fade-in">
+        <div class="treat-block-header">
+          <span class="treat-block-num">04</span>
+          <h3 class="treat-block-title">크라운</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div>
+            <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">치아 전체를 감싸 보호합니다</p>
+            <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">신경치료 후나 치아가 많이 손상된 경우, 치아 전체를 덮는 크라운으로 강도를 회복시킵니다. 자체 기공소를 운영해 정밀하고 자연스러운 보철물을 제작합니다.</p>
+          </div>
+          <img src="images/treatment-crown.png" alt="크라운" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 임플란트 치료 -->
+    <div class="treat-cat-section" id="treat-implant">
+      <div class="treat-cat-header fade-in">
+        <div>
+          <span class="treat-cat-tag" style="background:rgba(0,162,232,0.1);color:var(--son-n)">IMPLANT</span>
+          <h3 class="treat-cat-title">임플란트 치료</h3>
+        </div>
+        <p class="treat-cat-desc">12,000케이스 이상의 경험으로<br>안전하고 정확한 임플란트</p>
+      </div>
+
+      <div class="treat-block fade-in">
+        <div style="display:flex;flex-direction:column;gap:56px">
+          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+            <div>
+              <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">S.O.N Plant System</p>
+              <p style="font-size:15px;color:var(--son-navy);font-weight:700;margin-bottom:12px">꼭 필요한 곳에만, 정확하게</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">정밀 CT 진단을 바탕으로 꼭 필요한 부위에만 식립하고, 고난도 부위도 정밀하게 치료합니다. 환자의 교합력에 맞춘 맞춤 설계로 오래도록 사용할 수 있습니다.</p>
+            </div>
+            <img src="images/treatment-son-plant.png" alt="S.O.N Plant 시스템" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+            <div>
+              <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Overdenture</p>
+              <p style="font-size:15px;color:var(--son-navy);font-weight:700;margin-bottom:12px">임플란트로 고정하는 틀니</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">여러 개의 치아를 잃은 경우, 소수의 임플란트로 틀니를 고정해 안정적으로 사용할 수 있습니다. 일반 틀니보다 씹는 힘이 강하고 이물감이 적습니다.</p>
+            </div>
+            <img src="images/treatment-overdenture.png" alt="임플란트 틀니 오버덴쳐" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ 교정 클리닉 -->
+    <div class="treat-cat-section" id="treat-ortho">
+      <div class="treat-cat-header fade-in">
+        <div>
+          <span class="treat-cat-tag" style="background:rgba(88,184,71,0.1);color:var(--son-o)">ORTHODONTICS</span>
+          <h3 class="treat-cat-title">교정 클리닉</h3>
+        </div>
+      </div>
+      <div class="treat-block fade-in">
+        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div>
+            <p style="font-size:15px;color:var(--son-o);font-weight:700;margin-bottom:12px">전원 자가결찰 브라켓으로 더 빠르고 정확하게</p>
+            <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all;margin-bottom:24px">모든 교정 환자에게 자가결찰 브라켓을 적용해 마찰력을 줄이고 치료 효율을 높입니다. 유지장치·교정 pin 등 추가 장치가 진료비에 모두 포함되어 있어 예측 가능한 비용으로 교정 치료를 받으실 수 있습니다.</p>
+            <div class="bto-items">
+              <div class="bto-item" style="border-left-color:var(--son-o)">
+                <div class="bto-label" style="color:var(--son-o)">자가결찰 브라켓 <span>마찰력↓ · 치료기간↓</span></div>
+                <p class="bto-desc">일반 브라켓 대비 마찰이 적어 치아 이동이 빠르고 내원 간격을 늘릴 수 있습니다.</p>
+              </div>
+              <div class="bto-item" style="border-left-color:var(--son-o)">
+                <div class="bto-label" style="color:var(--son-o)">유지장치·교정 pin 포함 <span>추가 비용 없음</span></div>
+                <p class="bto-desc">치료 후 필요한 유지장치와 교정 pin이 모두 진료비에 포함되어 있어 부담이 없습니다.</p>
+              </div>
+            </div>
+          </div>
+          <img src="images/교정치료.png" alt="교정 클리닉" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 심미 클리닉 -->
+    <div class="treat-cat-section" id="treat-aesthetic">
+      <div class="treat-cat-header fade-in">
+        <div>
+          <span class="treat-cat-tag" style="background:rgba(237,72,36,0.08);color:var(--son-s)">AESTHETIC</span>
+          <h3 class="treat-cat-title">심미 클리닉</h3>
+        </div>
+        <p class="treat-cat-desc">건강하면서도 아름다운<br>자연스러운 미소를 만들어드립니다</p>
+      </div>
+      <div class="treat-block fade-in">
+        <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+          <div>
+            <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">한 번에 끝내지 않습니다 — 단계적으로 오래가는 미백</p>
+            <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all;margin-bottom:24px">정밀 색상 진단 후 3사이클 집중 미백을 진행하고, 1~2개월 후 보강 1사이클을 추가합니다. 처음부터 하얗게 만드는 것이 아니라 단계적으로 밝기를 높여 자연스럽고 오래가는 결과를 만들어냅니다.</p>
+            <div class="bto-items">
+              <div class="bto-item" style="border-left-color:var(--son-s)">
+                <div class="bto-label" style="color:var(--son-s)">3-Cycle 집중 미백 <span>맞춤 반응 조절</span></div>
+                <p class="bto-desc">1회 방문 시 3사이클로 집중 미백을 진행하며, 치아 상태에 따라 반응성과 농도를 개인 맞춤으로 조절합니다.</p>
+              </div>
+              <div class="bto-item" style="border-left-color:var(--son-s)">
+                <div class="bto-label" style="color:var(--son-s)">1~2개월 후 보강 1-Cycle <span>유지력↑ 자연스러움↑</span></div>
+                <p class="bto-desc">시간이 지나 안정된 치아에 보강 사이클을 추가해 밝기를 완성하고 결과를 오래 유지합니다.</p>
+              </div>
+            </div>
+          </div>
+          <img src="images/미백.png" alt="미백 심미 클리닉" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+        </div>
+      </div>
+    </div>    <!-- ⑤ 특수 클리닉 -->
+    <div class="treat-cat-section" id="treat-special">
+      <div class="treat-cat-header fade-in">
+        <div>
+          <span class="treat-cat-tag" style="background:rgba(237,72,36,0.1);color:var(--son-s)">SPECIAL CARE</span>
+          <h3 class="treat-cat-title">특수 클리닉</h3>
+        </div>
+        <p class="treat-cat-desc">일반 치과에서 다루기 어려운<br>고난도 특수 진료를 전문적으로 시행합니다</p>
+      </div>
+      <div class="treat-block fade-in">
+        <div style="display:flex;flex-direction:column;gap:56px">
+
+          <!-- 턱관절 -->
+          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+            <div>
+              <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">TMJ Treatment</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">턱관절 치료</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">턱관절과 주변 근육의 통증·소리·입 벌림 불편·씹기 불편 등을 정밀 진단합니다. 단순히 증상을 줄이는 것이 아니라 원인을 파악하고, 스플린트(교합안정장치)·물리치료·생활습관 관리를 병행해 기능 회복과 장기적 안정을 돕는 보존적 치료입니다.</p>
+            </div>
+            <img src="images/턱관절.png" alt="턱관절 치료" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+          </div>
+
+          <!-- 치근단 -->
+          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+            <div>
+              <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Apicoectomy</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">현미경 치근단절제술</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">신경치료 후에도 치근단 주변에 염증이나 통증이 지속되는 경우, 현미경 확대 시야 아래에서 감염된 치근단 부위를 외과적으로 정밀 제거합니다. 최소한의 절제로 치근단 병소를 안전하게 처리하여 자연치아를 보존하는 정밀 외과 수술입니다.</p>
+            </div>
+            <img src="images/치근단.png" alt="현미경 치근단절제술" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+          </div>
+
+          <!-- 치은재생 -->
+          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+            <div>
+              <p style="font-size:12px;font-weight:700;color:var(--son-o);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Gingival Regeneration</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">치은 재생술</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">잇몸이 내려앉거나 치주 조직이 손상된 경우, 잇몸선과 지지 조직을 재생·증대시켜 뿌리를 보호하고 치주 건강을 회복시킵니다. 퇴각·결손의 깊이와 범위를 정밀히 진단한 후 재생 재료를 세심하게 안정화해 노출된 뿌리를 덮고 잇몸 안정성을 장기적으로 유지합니다.</p>
+            </div>
+            <img src="images/치은재생.png" alt="치은재생술" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+          </div>
+
+          <!-- 낭종제거 -->
+          <div style="display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center">
+            <div>
+              <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Cyst Removal</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">낭종 제거술</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">치아나 턱뼈 주변에 생긴 낭종(병적 주머니)을 파노라마·CBCT로 정확히 진단하고, 수술적으로 제거하여 인접 치아와 뼈를 보존합니다. 병소를 명확히 제거하면서 치아·신경·뼈의 회복까지 고려하는 정밀 외과 치료로, 방치 시 주변 구조물 파괴로 이어질 수 있어 조기 치료가 중요합니다.</p>
+            </div>
+            <img src="images/낭종제거.png" alt="낭종제거술" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+
+<!-- GALLERY -->
+<section class="section gallery-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow blue">Our Space</span>
+      <h2 class="section-title">병원 공간 소개</h2>
+      <p class="section-lead">편안하고 쾌적한 공간에서 최고의 진료를 경험하세요.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item wide fade-in"><img src="images/waiting-room.jpg" alt="대기실" loading="lazy"><div class="gal-cap">넓고 쾌적한 대기실</div></div>
+      <div class="gal-item fade-in d1"><img src="images/consultation.jpg" alt="상담실" loading="lazy"><div class="gal-cap">편안한 상담실</div></div>
+      <div class="gal-item fade-in d2"><img src="images/reception.jpg" alt="데스크" loading="lazy"><div class="gal-cap">친절한 접수 데스크</div></div>
+      <div class="gal-item wide fade-in d1"><img src="images/clinic1.jpg" alt="진료실" loading="lazy"><div class="gal-cap">최신 장비 진료실</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px">
+      <div class="gal-item fade-in"><img src="images/entrance.jpg" alt="입구" loading="lazy" style="height:190px;width:100%;object-fit:cover;border-radius:var(--radius-md)"><div class="gal-cap">병원 입구</div></div>
+      <div class="gal-item fade-in d1"><img src="images/momki-room.jpg" alt="맘키룸" loading="lazy" style="height:190px;width:100%;object-fit:cover;border-radius:var(--radius-md)"><div class="gal-cap">맘키룸</div></div>
+      <div class="gal-item fade-in d2"><img src="images/surgery.jpg" alt="수술방" loading="lazy" style="height:190px;width:100%;object-fit:cover;border-radius:var(--radius-md)"><div class="gal-cap">임플란트 수술방</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (텍스트 전용) -->
+<section class="section testimonials-section" id="reviews">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow">Patient Reviews</span>
+      <h2 class="section-title">환자 분들의 진심 어린 후기</h2>
+      <p class="section-lead">직접 써주신 소중한 마음들입니다. 이것이 연세손치과의 가장 큰 자랑입니다.</p>
+    </div>
+    <div class="test-quote-grid">
+      <div class="test-quote-card fade-in d1">
+        <div class="test-quote-mark">"</div>
+        <p class="test-quote-text">손치과 대박입니다. 첫째; 환자에게 한없이 친절하고, 둘째; 치료할 때 더없이 편안하고, 셋째; 사후관리가 철저해 마음이 편안합니다. 손치과 화이팅!</p>
+        <div class="test-quote-bottom"><span class="test-quote-author">박양우 환자님</span><span class="test-quote-years">내원 3년차</span></div>
+      </div>
+      <div class="test-quote-card fade-in d2">
+        <div class="test-quote-mark">"</div>
+        <p class="test-quote-text">저는 오래전 연세손치과 이전부터 이곳에서 치아 치료를 하고 있습니다. 항상 친절하고 자세히 살펴 주셔서 편하게 치료 받고 있음과 신뢰합니다. 참 진료 잘하는 치과입니다.</p>
+        <div class="test-quote-bottom"><span class="test-quote-author">김정수 환자님</span><span class="test-quote-years">내원 10년차</span></div>
+      </div>
+      <div class="test-quote-card fade-in d3">
+        <div class="test-quote-mark">"</div>
+        <p class="test-quote-text">처음이 어렵지, 한번 오면 계속 다니고 싶은 연세손치과 ♡</p>
+        <div class="test-quote-bottom"><span class="test-quote-author">김보람 환자님</span><span class="test-quote-years">내원 2년차</span></div>
+      </div>
+      <div class="test-quote-card fade-in">
+        <div class="test-quote-mark">"</div>
+        <p class="test-quote-text">너무 너무 친절하시네요. 가족, 동료, 친구들에게 추천해 주고 싶은 치과예요. 우리 사장님께도 추천 드렸는데 친절하셔서 치료잘 하신다고 칭찬하셨습니다.</p>
+        <div class="test-quote-bottom"><span class="test-quote-author">이순희 환자님</span><span class="test-quote-years">내원 4년차</span></div>
+      </div>
+      <div class="test-quote-card fade-in d1">
+        <div class="test-quote-mark">"</div>
+        <p class="test-quote-text">온 가족이 모두 다 함께 치료받는 치과.</p>
+        <div class="test-quote-bottom"><span class="test-quote-author">손호진 환자님</span><span class="test-quote-years">내원 5년차</span></div>
+      </div>
+      <div class="test-quote-card fade-in d2">
+        <div class="test-quote-mark">"</div>
+        <p class="test-quote-text">너무 친절하시고 오래 다니고 싶어요.</p>
+        <div class="test-quote-bottom"><span class="test-quote-author">문지혜 환자님</span><span class="test-quote-years">내원 1년차</span></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--color-text-muted);margin-top:20px">※ 내원 연차는 추후 실제 데이터로 수정해 주세요.</p>
+  </div>
+</section>
+
+<!-- HISTORY (배경만) -->
+<section class="history-section">
+  <div class="hist-overlay"></div>
+  <div class="container hist-content">
+    <div class="section-header fade-in" style="margin-bottom:0">
+      <span class="eyebrow" style="color:rgba(255,255,255,0.55)">Our History</span>
+      <h2 class="hist-title">연세손치과의 발자취</h2>
+      <p class="hist-lead">2013년 개원부터 지금까지, 부평구 지역사회와 함께 성장해왔습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY PHOTOS -->
+<section style="background:#F8F9FB;padding:72px 0 0">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:36px">
+      <span style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--son-s);text-transform:uppercase;display:block;margin-bottom:10px">10th Anniversary</span>
+      <h3 style="font-size:clamp(22px,2.5vw,30px);font-weight:800;color:var(--son-navy);letter-spacing:-0.02em;margin-bottom:10px">오래오래상 수상자 분들</h3>
+      <p style="font-size:15px;color:var(--color-text-light);line-height:1.7;word-break:keep-all">10년 넘게 꾸준히 내원하셔서 관리를 받으시며 연세손치과의 임플란트를 오래도록 사용하신 환자분들께 드리는 감사의 자리.<br>10주년 기념 행사에서 오래오래상을 수상하신 소중한 분들입니다.</p>
+    </div>
+    <div class="fade-in" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px">
+      <img src="images/10year-implant-patients.jpg" alt="10주년 오래오래상 수상 환자분들" style="width:100%;display:block;object-fit:cover">
+    </div>
+  </div>
+  <!-- 전체사진 위에 텍스트 오버레이 -->
+  <div style="position:relative;overflow:hidden">
+    <img src="images/전체사진.jpg" alt="10주년 행사 전체사진" style="width:100%;display:block;object-fit:cover;min-height:620px">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,20,33,0.97) 0%, rgba(13,20,33,0.88) 55%, rgba(13,20,33,0.35) 100%)"></div>
+    <div class="container fade-in" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;padding-bottom:60px">
+      <h4 style="font-size:clamp(28px,3.2vw,44px);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.35;margin-bottom:44px;text-align:center;word-break:keep-all;text-shadow:0 2px 24px rgba(0,0,0,0.6)">연세손치과의 치료는<br><em style="font-style:normal;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">시간이 지나도 신뢰할 수 있습니다</em></h4>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left">
+        <div style="padding:32px 28px;background:rgba(255,255,255,0.14);backdrop-filter:blur(16px);border-radius:var(--radius-md);border:1px solid rgba(255,255,255,0.2);border-top:4px solid var(--son-s)">
+          <div style="font-size:19px;font-weight:900;color:#fff;margin-bottom:14px;letter-spacing:-0.01em">오랜 기간 유지되는 치료 결과</div>
+          <p style="font-size:15px;color:rgba(255,255,255,0.9);line-height:1.8;word-break:keep-all">연세손치과에서 시술된 임플란트는 환자분들이 오랜 시간 동안 안심하고 사용할 수 있도록 철저히 관리됩니다.</p>
+        </div>
+        <div style="padding:32px 28px;background:rgba(255,255,255,0.14);backdrop-filter:blur(16px);border-radius:var(--radius-md);border:1px solid rgba(255,255,255,0.2);border-top:4px solid var(--son-o)">
+          <div style="font-size:19px;font-weight:900;color:#fff;margin-bottom:14px;letter-spacing:-0.01em">지속적인 사후 관리</div>
+          <p style="font-size:15px;color:rgba(255,255,255,0.9);line-height:1.8;word-break:keep-all">시술 이후에도 환자분들의 구강 건강을 위해 지속적인 관리와 지원을 아끼지 않습니다.</p>
+        </div>
+        <div style="padding:32px 28px;background:rgba(255,255,255,0.14);backdrop-filter:blur(16px);border-radius:var(--radius-md);border:1px solid rgba(255,255,255,0.2);border-top:4px solid var(--son-n)">
+          <div style="font-size:19px;font-weight:900;color:#fff;margin-bottom:14px;letter-spacing:-0.01em">검증된 신뢰성</div>
+          <p style="font-size:15px;color:rgba(255,255,255,0.9);line-height:1.8;word-break:keep-all">"오래오래"상은 연세손치과의 치료가 얼마나 건강하고 신뢰할 만한지를 증명하는 상징입니다. 앞으로도 건강하고 행복한 미소를 유지하실 수 있도록 최선을 다하겠습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL CONTRIBUTION -->
+<section style="background:#fff;padding:80px 0">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:48px">
+      <span style="font-size:12px;font-weight:700;letter-spacing:2px;color:var(--son-o);text-transform:uppercase;display:block;margin-bottom:10px">Social Contribution</span>
+      <h3 style="font-size:clamp(24px,2.8vw,34px);font-weight:800;color:var(--son-navy);letter-spacing:-0.02em">사회 공헌 이력</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+      <div class="fade-in">
+        <div style="display:flex;flex-direction:column;gap:32px">
+          <div style="padding:28px 32px;border-left:4px solid var(--son-s);background:#F8F9FB;border-radius:0 var(--radius-md) var(--radius-md) 0">
+            <div style="font-size:16px;font-weight:800;color:var(--son-navy);margin-bottom:8px">부평구·계양구와의 협업</div>
+            <p style="font-size:14px;color:var(--color-text-light);line-height:1.75;word-break:keep-all">부평구·계양구 내 저소득층을 대상으로 무료 틀니 제공 및 봉사활동 진행</p>
+          </div>
+          <div style="padding:28px 32px;border-left:4px solid var(--son-o);background:#F8F9FB;border-radius:0 var(--radius-md) var(--radius-md) 0">
+            <div style="font-size:16px;font-weight:800;color:var(--son-navy);margin-bottom:8px">사랑의 쌀 운동본부 후원</div>
+            <p style="font-size:14px;color:var(--color-text-light);line-height:1.75;word-break:keep-all">매달 지정 사랑장으로 사랑의 쌀 운동본부를 후원하여 소외된 이웃들에게 도움 제공</p>
+          </div>
+          <div style="padding:28px 32px;border-left:4px solid var(--son-n);background:#F8F9FB;border-radius:0 var(--radius-md) var(--radius-md) 0">
+            <div style="font-size:16px;font-weight:800;color:var(--son-navy);margin-bottom:8px">무료 임플란트 및 틀니 제공</div>
+            <p style="font-size:14px;color:var(--color-text-light);line-height:1.75;word-break:keep-all">부평구·계양구 저소득층을 대상으로 무료 임플란트 및 틀니 정기 제공</p>
+          </div>
+          <div style="padding:28px 32px;border-left:4px solid var(--son-s);background:#F8F9FB;border-radius:0 var(--radius-md) var(--radius-md) 0">
+            <div style="font-size:16px;font-weight:800;color:var(--son-navy);margin-bottom:8px">인천장애인 연합회 협약</div>
+            <p style="font-size:14px;color:var(--color-text-light);line-height:1.75;word-break:keep-all">인천장애인 연합회와 공식 협약을 체결하여 장애인 환자분들의 구강 건강 관리를 지원하고, 치과 접근성 향상을 위해 함께 노력합니다.</p>
+          </div>
+          <div style="padding:20px 24px;background:var(--son-navy);border-radius:var(--radius-md);color:rgba(255,255,255,0.75);font-size:13px;line-height:1.75;word-break:keep-all">
+            🏆 병원에서 받을 수 있는 초대 영예인 <strong style="color:#fff">보건복지부장관상</strong>, <strong style="color:#fff">보건복지부위원장상</strong>, <strong style="color:#fff">시장 표창</strong> 수상
+          </div>
+        </div>
+      </div>
+      <div class="fade-in d1" style="display:flex;flex-direction:column;gap:16px">
+        <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)">
+          <img src="images/사랑의쌀.png" alt="사랑의 쌀 운동본부 후원" style="width:100%;display:block;object-fit:cover">
+        </div>
+        <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)">
+          <img src="images/인천장애인.jpg" alt="인천장애인 연합회 협약" style="width:100%;display:block;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section location-section" id="location">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="eyebrow blue">Find Us</span>
+      <h2 class="section-title">오시는 길</h2>
+    </div>
+    <div class="loc-inner">
+      <div class="fade-in">
+        <h3 class="loc-title">연세손치과의원</h3>
+        <div class="loc-rows">
+          <div class="loc-row"><div class="loc-icon">📍</div><div><div class="loc-lbl">주소</div><div class="loc-val">인천시 부평구 마장로 438<br>손치과사거리 빌딩</div></div></div>
+          <div class="loc-row"><div class="loc-icon">📞</div><div><div class="loc-lbl">전화 예약</div><div class="loc-val"><a href="tel:032-505-2868" style="font-weight:700;color:var(--son-s)">032-505-2868</a></div></div></div>
+          <div class="loc-row"><div class="loc-icon">🚇</div><div><div class="loc-lbl">지하철</div><div class="loc-val">7호선 산곡역 / 인천1호선 갈산역</div></div></div>
+          <div class="loc-row"><div class="loc-icon">🚌</div><div><div class="loc-lbl">버스</div><div class="loc-val">청천치안센터 정류장 바로 앞</div></div></div>
+          <div class="loc-row"><div class="loc-icon">🚗</div><div><div class="loc-lbl">주차</div><div class="loc-val">주차 가능</div></div></div>
+        </div>
+        <div class="hours-box">
+          <div class="hr-row"><span class="hr-day">월·화·수·금</span></div><div class="hr-row">09:40 ~ 18:00</div>
+          <div class="hr-row"><span class="hr-day">토요일</span></div><div class="hr-row">09:40 ~ 13:30</div>
+          <div class="hr-row"><span class="hr-day hr-night">야간진료 (월·목)</span></div><div class="hr-row hr-night">09:40 ~ 20:30</div>
+          <div class="hr-row"><span class="hr-day">점심시간</span></div><div class="hr-row">13:00 ~ 14:00</div>
+        </div>
+        <p style="font-size:12px;color:var(--color-text-muted);margin-top:10px">※ 공휴일 및 일요일 휴진</p>
+      </div>
+      <div class="map-wrap fade-in d1">
+        <iframe src="https://maps.google.com/maps?q=인천+부평구+마장로438&output=embed&z=15" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>지금 바로 예약하세요</h2>
+    <p>처음 방문하시는 분도 편안하게 맞이하겠습니다</p>
+    <div class="cta-btns">
+      <a href="tel:032-505-2868" class="btn-white">📞 032-505-2868</a>
+      <a href="#location" class="btn-ghost">📍 오시는 길 보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="ft-brand"><span class="s">S</span><span class="o">O</span><span class="n">N</span></div>
+        <p class="ft-tagline">우리 곁, 진료 잘하는 치과</p>
+        <p class="ft-desc">연세대학교 치과대학 출신 전문의료진이<br>가족처럼 정성껏 진료합니다.</p>
+      </div>
+      <div>
+        <div class="ft-heading">진료 안내</div>
+        <ul class="ft-links">
+          <li><a href="#about">병원소개</a></li>
+          <li><a href="#doctors">의료진</a></li>
+          <li><a href="#treatments">진료과목</a></li>
+          <li><a href="#programs">특화프로그램</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-heading">진료 시간</div>
+        <ul class="ft-hours">
+          <li><span>월·화·수·금</span><span>09:40 – 18:00</span></li>
+          <li><span>야간 (월·목)</span><span>09:40 – 20:30</span></li>
+          <li><span>토요일</span><span>09:40 – 13:30</span></li>
+          <li><span>일·공휴일</span><span>휴진</span></li>
+          <li><span>점심시간</span><span>13:00 – 14:00</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-heading">오시는 길</div>
+        <p class="ft-addr">인천시 부평구 마장로 438<br>손치과사거리 빌딩</p>
+        <a href="tel:032-505-2868" class="ft-tel">032-505-2868</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p id="admin-trigger" style="cursor:default;user-select:none">© 2013 연세손치과의원. All rights reserved.</p>
+      <p style="margin-top:4px;font-size:12px;color:rgba(255,255,255,0.3)">사업자등록번호 : 122-92-50111 | 대표원장 : 손기요</p>
+    </div>
+  </div>
+</footer>
+<script>
+// ── fade-in ──────────────────────────────────────────────────────────────────
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');fadeObserver.unobserve(e.target);} });
+}, {threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+// ── 스크롤 진행바 ────────────────────────────────────────────────────────────
+const scrollBar = document.createElement('div');
+scrollBar.id='scroll-bar'; document.body.prepend(scrollBar);
+const hdr = document.querySelector('.header');
+const heroBg = document.getElementById('heroBg');
+const navLinks = document.querySelectorAll('.nav-link[data-section]');
+const sections = ['about','doctors','treatments','programs','reviews','location'];
+function onScroll(){
+  const s=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+  scrollBar.style.width=(s/h*100)+'%';
+  if(hdr) hdr.classList.toggle('scrolled',s>40);
+  if(heroBg) heroBg.style.transform='translateY('+(s*0.22)+'px)';
+  let cur='';
+  sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=120)cur=id;});
+  navLinks.forEach(a=>a.classList.toggle('active',a.dataset.section===cur));
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// ── 부드러운 스크롤 ──────────────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(!t)return; e.preventDefault();
+    window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});
+    document.getElementById('nav').classList.remove('open');
+  });
+});
+
+// ── 팝업 ─────────────────────────────────────────────────────────────────────
+const POPUP_DEFAULT={bg:'gradient',title:'🏆 보건복지부장관상 수상',body:'우리곁, 진료잘하는 연세손치과의원\n임플란트 12,000케이스 경험의 전문의료팀',btn:'진료 예약하기',link:'#location',img:''};
+
+function getPopupData(){try{return JSON.parse(localStorage.getItem('popupDesign'))||POPUP_DEFAULT;}catch(e){return POPUP_DEFAULT;}}
+
+function renderPopup(d){
+  d=d||getPopupData();
+  const content=document.getElementById('popupContent'); if(!content)return;
+  const bgs={gradient:'background:linear-gradient(135deg,#ED4824 0%,#58B847 50%,#00A2E8 100%)',navy:'background:#1A2942',white:'background:#fff',image:d.img?`background:url('${d.img}') center/cover no-repeat`:'background:linear-gradient(135deg,#ED4824,#00A2E8)'};
+  const bgStyle=bgs[d.bg]||bgs.gradient;
+  const dark=d.bg!=='white', tc=dark?'#fff':'#1A2942', sc=dark?'rgba(255,255,255,0.82)':'#555';
+  const overlay=d.bg==='image'&&d.img?'<div style="position:absolute;inset:0;background:rgba(13,20,33,0.55)"></div>':'';
+  const btnHtml=d.btn?`<a href="${d.link||'#'}" onclick="closePopup()" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#fff;color:#1A2942;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none">${d.btn}</a>`:'';
+  content.innerHTML=`<div style="${bgStyle};padding:44px 36px;text-align:center;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">${overlay}<div style="position:relative;z-index:1"><p style="font-size:26px;font-weight:900;color:${tc};line-height:1.35;margin-bottom:12px;word-break:keep-all">${d.title}</p><p style="font-size:15px;color:${sc};line-height:1.7;white-space:pre-line">${d.body}</p>${btnHtml}</div></div>`;
+}
+
+function closePopup(){document.getElementById('popupOverlay').classList.add('hidden');}
+function checkToday(){
+  if(document.getElementById('todayChk').checked){const e=new Date();e.setHours(23,59,59,0);localStorage.setItem('popupHideUntil',e.getTime());}
+  else localStorage.removeItem('popupHideUntil');
+}
+function saveEnabled(){localStorage.setItem('popupEnabled',document.getElementById('popupEnabled').checked?'1':'0');}
+function previewPopupImg(){
+  const file=document.getElementById('popupFile').files[0]; if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{const p=document.getElementById('popupImgPrev');p.src=e.target.result;p.style.display='block';};
+  r.readAsDataURL(file);
+}
+function savePopupDesign(){
+  const bg=document.querySelector('input[name="popupBg"]:checked')?.value||'gradient';
+  const imgSrc=document.getElementById('popupImgPrev').src||'';
+  const d={bg,img:bg==='image'?imgSrc:'',title:document.getElementById('popupTitle').value||POPUP_DEFAULT.title,body:document.getElementById('popupBody').value||POPUP_DEFAULT.body,btn:document.getElementById('popupBtn').value,link:document.getElementById('popupLink').value||'#location'};
+  localStorage.setItem('popupDesign',JSON.stringify(d));
+  renderPopup(d); alert('팝업이 저장되었습니다!');
+}
+function previewPopupNow(){
+  const bg=document.querySelector('input[name="popupBg"]:checked')?.value||'gradient';
+  const imgSrc=document.getElementById('popupImgPrev').src||'';
+  const d={bg,img:bg==='image'?imgSrc:'',title:document.getElementById('popupTitle').value||POPUP_DEFAULT.title,body:document.getElementById('popupBody').value||POPUP_DEFAULT.body,btn:document.getElementById('popupBtn').value,link:document.getElementById('popupLink').value||'#location'};
+  renderPopup(d); document.getElementById('popupOverlay').classList.remove('hidden');
+}
+function resetPopupDesign(){localStorage.removeItem('popupDesign');renderPopup(POPUP_DEFAULT);loadAdminFields(POPUP_DEFAULT);alert('초기화되었습니다.');}
+function loadAdminFields(d){
+  const bg=document.querySelector(`input[name="popupBg"][value="${d.bg}"]`); if(bg)bg.checked=true;
+  document.getElementById('popupTitle').value=d.title||'';
+  document.getElementById('popupBody').value=d.body||'';
+  document.getElementById('popupBtn').value=d.btn||'';
+  document.getElementById('popupLink').value=d.link||'';
+}
+
+// ── 초기화 ────────────────────────────────────────────────────────────────────
+(function(){
+  const d=getPopupData(); renderPopup(d); loadAdminFields(d);
+  const hide=localStorage.getItem('popupHideUntil');
+  const off=localStorage.getItem('popupEnabled')==='0';
+  if(!off&&!(hide&&Date.now()<parseInt(hide)))setTimeout(()=>document.getElementById('popupOverlay')?.classList.remove('hidden'),500);
+  const chk=document.getElementById('popupEnabled'); if(chk)chk.checked=localStorage.getItem('popupEnabled')!=='0';
+})();
+
+function toggleMenu(){document.getElementById('nav').classList.toggle('open');}
+
+// ── 관리자 잠금 ───────────────────────────────────────────────────────────────
+const ADMIN_PW = 'son2024';  // ← 비밀번호 여기서 변경
+function toggleAdmin(){
+  const p=document.getElementById('adminPanel');
+  if(p) p.classList.toggle('open');
+}
+// 비밀번호 입력 후 버튼 표시
+function unlockAdmin(){
+  const pw = prompt('관리자 비밀번호를 입력하세요:');
+  if(pw === ADMIN_PW){
+    document.querySelector('.admin-btn-float').classList.add('unlocked');
+    sessionStorage.setItem('adminUnlocked','1');
+    toggleAdmin();
+  } else if(pw !== null){
+    alert('비밀번호가 올바르지 않습니다.');
+  }
+}
+// URL에 #admin 있으면 관리자 모드 진입
+(function(){
+  function checkHash(){
+    if(location.hash==='#admin'){
+      history.replaceState(null,'',location.pathname);
+      if(sessionStorage.getItem('adminUnlocked')==='1'){
+        document.querySelector('.admin-btn-float').classList.add('unlocked');
+        toggleAdmin();
+      } else {
+        unlockAdmin();
+      }
+    }
+  }
+  checkHash();
+  window.addEventListener('hashchange', checkHash);
+})();
+// 세션 유지 (새로고침해도 비번 재입력 불필요)
+if(sessionStorage.getItem('adminUnlocked')==='1'){
+  document.querySelector('.admin-btn-float')?.classList.add('unlocked');
+}
+function saveImg(type){}
+function previewImg(type){const f=document.getElementById(type+'File');if(!f||!f.files[0])return;const r=new FileReader();r.onload=e=>{if(type==='hero'){const bg=document.getElementById('heroBg');if(bg)bg.style.backgroundImage=`url('${e.target.result}')`;localStorage.setItem('heroBg',e.target.result);}};r.readAsDataURL(f.files[0]);}
+</script>
+</body>
+</html>
