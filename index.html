@@ -238,7 +238,42 @@ ul,ol{list-style:none}
 .treat-cat-tag{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;background:rgba(26,41,66,0.08);color:var(--son-navy);padding:5px 14px;border-radius:100px;display:inline-block;margin-bottom:10px}
 .treat-cat-title{font-size:clamp(22px,2.6vw,32px);font-weight:900;color:var(--son-navy)}
 .treat-cat-desc{font-size:15px;color:var(--color-text-light);line-height:1.8;text-align:right;flex-shrink:0;max-width:280px;padding-top:6px;word-break:keep-all}
-@media(max-width:768px){.treat-block{padding:32px 20px}}
+@media(max-width:768px){
+  .treat-block{padding:28px 16px}
+  /* 진료 카드 내부 그리드 → 1열로 */
+  .treat-block > div[style*="grid-template-columns"],
+  .treat-block > div > div[style*="grid-template-columns"]{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:20px !important;
+  }
+  /* 카테고리 헤더 세로 정렬 */
+  .treat-cat-header{flex-direction:column;gap:8px;align-items:flex-start}
+  .treat-cat-desc{text-align:left;max-width:100%;font-size:14px}
+  .treat-cat-title{font-size:22px}
+  /* 진료 텍스트 word-break 개선 */
+  .treat-block p, .treat-block h3, .treat-block strong{word-break:keep-all;overflow-wrap:break-word}
+  /* 이미지 순서 - 텍스트 먼저, 이미지 나중 */
+  .treat-block > div[style*="grid-template-columns"] > div:last-child,
+  .treat-block > div > div[style*="grid-template-columns"] > div:last-child{order:2}
+  .treat-block > div[style*="grid-template-columns"] > div:first-child,
+  .treat-block > div > div[style*="grid-template-columns"] > div:first-child{order:1}
+  /* S.O.N 가치 카드 텍스트 */
+  .son-desc{font-size:14px}
+  /* 사회공헌·임플란트 등 인라인 1fr 1fr 그리드 → 1열 */
+  .container > div[style*="grid-template-columns:1fr 1fr"],
+  section > div[style*="grid-template-columns:1fr 1fr"],
+  .section > .container > div[style*="grid-template-columns"],
+  div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr !important;
+    gap:28px !important;
+  }
+  /* 진료 카드 본문 텍스트 줄바꿈 */
+  .treat-block p, .treat-block li{
+    line-height:1.9;
+    word-break:keep-all;
+  }
+}
 
 /* ── Promise Mini (between trust & doctors) ── */
 .promise-mini{background:var(--son-navy);overflow:hidden}
