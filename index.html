@@ -113,8 +113,7 @@ ul,ol{list-style:none}
 .stat-num{font-size:40px;font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1}
 .stat-num span{font-size:18px;font-weight:600;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:8px;font-weight:500}
-@media(max-width:768px){.stat-item{padding:12px 20px;min-width:33.3%}}.stat-item:nth-child(3n){border-right:none}
-@media(max-width:480px){.stat-item{min-width:50%}}
+/* stats 모바일 CSS → 하단 통합 블록으로 이동 */
 
 /* ── Section Header ── */
 .section-header{text-align:center;margin-bottom:60px}
@@ -424,6 +423,44 @@ ul,ol{list-style:none}
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}.no-js .fade-in{opacity:1;transform:none}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+/* ── treat-inner: 진료 내부 2:3 그리드 ── */
+.treat-inner{display:grid;grid-template-columns:2fr 3fr;gap:48px;align-items:center}
+
+/* ── feat-wrap / feat-overlay / feat-3grid: 전체사진 오버레이 ── */
+.feat-wrap{position:relative;overflow:hidden}
+.feat-wrap img{width:100%;display:block;object-fit:cover;min-height:620px}
+.feat-3grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
+
+/* ── bto-label 배지 줄바꿈 방지 ── */
+.bto-label{font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-0.01em;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.bto-label span{font-size:13px;font-weight:600;opacity:0.75;white-space:nowrap}
+
+/* ── Mobile: 수정된 stats 2열 그리드 ── */
+@media(max-width:768px){
+  /* ── Stats: 2×3 grid ── */
+  .stats-inner{display:grid!important;grid-template-columns:1fr 1fr;gap:0}
+  .stat-item{padding:16px 10px;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12);text-align:center}
+  .stat-item:nth-child(even){border-right:none}
+  .stat-num{font-size:30px}
+  .stat-num span{font-size:14px}
+
+  /* ── treat-inner: 1열로 ── */
+  .treat-inner{grid-template-columns:1fr!important;gap:20px!important}
+
+  /* ── feat: 전체사진 오버레이 모바일 처리 ── */
+  .feat-wrap{display:block}
+  .feat-wrap img{min-height:200px!important;max-height:280px;object-position:center top}
+  /* gradient overlay 숨기기 (다음 형제 div) */
+  .feat-wrap > div:not(.container){display:none!important}
+  .feat-overlay{position:static!important;bottom:auto!important;left:auto!important;transform:none!important;padding:32px 16px!important;background:var(--son-navy)!important;width:100%!important}
+  .feat-3grid{grid-template-columns:1fr!important;gap:16px!important}
+
+  /* ── 발자취(역사) 섹션 ── */
+  .history-section{min-height:auto}
+  .hist-content{padding:48px 20px}
+  .hist-title{font-size:24px}
+}
 </style>
 </head>
 <body>
