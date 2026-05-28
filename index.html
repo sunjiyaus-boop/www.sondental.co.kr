@@ -114,10 +114,11 @@ ul,ol{list-style:none}
 .stat-num span{font-size:18px;font-weight:600;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat-label{font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:8px;font-weight:500}
 @media(max-width:768px){
-  .stat-item{padding:12px 20px;min-width:50%;border-right:1px solid rgba(255,255,255,0.12)}
+  .stats-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .stat-item{padding:16px 12px;border-right:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12)}
   .stat-item:nth-child(2n){border-right:none}
-  .stat-item:last-child{border-right:none;min-width:100%}
-  .stat-num{font-size:32px}
+  .stat-num{font-size:30px}
+  .stat-label{font-size:12px}
 }
 
 /* ── Section Header ── */
@@ -211,8 +212,8 @@ ul,ol{list-style:none}
 .prog-point.n::before{background:var(--son-n)}
 .bto-items{display:flex;flex-direction:column;gap:20px}
 .bto-item{padding:18px 20px;background:#F8F9FB;border-radius:var(--radius-md);border-left:3px solid currentColor}
-.bto-label{font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-0.01em}
-.bto-label span{font-size:13px;font-weight:600;margin-left:8px;opacity:0.75}
+.bto-label{font-size:17px;font-weight:800;margin-bottom:6px;letter-spacing:-0.01em;display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.bto-label span{font-size:13px;font-weight:600;opacity:0.75;white-space:nowrap}
 .bto-desc{font-size:14px;color:var(--color-text-light);line-height:1.75;margin:0}
 @media(max-width:900px){
   .prog-row{grid-template-columns:1fr;min-height:auto}
@@ -220,6 +221,22 @@ ul,ol{list-style:none}
   .prog-row.reverse .prog-info{order:1}
   .prog-photo{height:280px}
   .prog-info{padding:36px 24px}
+}
+/* feat-3grid */
+.feat-3grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
+@media(max-width:768px){
+  .feat-3grid{grid-template-columns:1fr !important;gap:16px}
+  /* feat-wrap: 이미지 높이 자동, 오버레이 → 일반 흐름 */
+  .feat-wrap{display:flex;flex-direction:column}
+  .feat-wrap img{min-height:220px !important;max-height:320px;object-position:center}
+  .feat-overlay{
+    position:relative !important;
+    bottom:auto !important;
+    left:auto !important;
+    transform:none !important;
+    padding:32px 16px !important;
+    background:rgba(13,20,33,0.97);
+  }
 }
 
 /* ── Treatments ── */
@@ -1156,12 +1173,12 @@ ul,ol{list-style:none}
     </div>
   </div>
   <!-- 전체사진 위에 텍스트 오버레이 -->
-  <div style="position:relative;overflow:hidden">
+  <div class="feat-wrap" style="position:relative;overflow:hidden">
     <img src="images/전체사진.jpg" alt="10주년 행사 전체사진" style="width:100%;display:block;object-fit:cover;min-height:620px">
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,20,33,0.97) 0%, rgba(13,20,33,0.88) 55%, rgba(13,20,33,0.35) 100%)"></div>
-    <div class="container fade-in" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;padding-bottom:60px">
+    <div class="container fade-in feat-overlay" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;padding-bottom:60px">
       <h4 style="font-size:clamp(28px,3.2vw,44px);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.35;margin-bottom:44px;text-align:center;word-break:keep-all;text-shadow:0 2px 24px rgba(0,0,0,0.6)">연세손치과의 치료는<br><em style="font-style:normal;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">시간이 지나도 신뢰할 수 있습니다</em></h4>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left">
+      <div class="feat-3grid">
         <div style="padding:32px 28px;background:rgba(255,255,255,0.14);backdrop-filter:blur(16px);border-radius:var(--radius-md);border:1px solid rgba(255,255,255,0.2);border-top:4px solid var(--son-s)">
           <div style="font-size:19px;font-weight:900;color:#fff;margin-bottom:14px;letter-spacing:-0.01em">오랜 기간 유지되는 치료 결과</div>
           <p style="font-size:15px;color:rgba(255,255,255,0.9);line-height:1.8;word-break:keep-all">연세손치과에서 시술된 임플란트는 환자분들이 오랜 시간 동안 안심하고 사용할 수 있도록 철저히 관리됩니다.</p>
@@ -1354,8 +1371,4 @@ function renderPopup(d){
   const dark=d.bg!=='white', tc=dark?'#fff':'#1A2942', sc=dark?'rgba(255,255,255,0.82)':'#555';
   const overlay=d.bg==='image'&&d.img?'<div style="position:absolute;inset:0;background:rgba(13,20,33,0.55)"></div>':'';
   const btnHtml=d.btn?`<a href="${d.link||'#'}" onclick="closePopup()" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#fff;color:#1A2942;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none">${d.btn}</a>`:'';
-  content.innerHTML=`<div style="${bgStyle};padding:44px 36px;text-align:center;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">${overlay}<div style="position:relative;z-index:1"><p style="font-size:26px;font-weight:900;color:${tc};line-height:1.35;margin-bottom:12px;word-break:keep-all">${d.title}</p><p style="font-size:15px;color:${sc};line-height:1.7;white-space:pre-line">${d.body}</p>${btnHtml}</div></div>`;
-}
-
-function closePopup(){document.getElementById('popupOverlay').classList.add('hidden');}
-functi
+  content.innerHTML=`<div style="${bgStyle};padding:44px 36px;text-align:center;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">${overlay}<div style="position:relative;z-index:1"><p style="font-size:26px;font-weight:900;color:${tc};line-height:1.35;margin-bottom:12px;word-break:keep-all">${d.title}</p><p 
