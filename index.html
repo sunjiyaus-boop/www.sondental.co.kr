@@ -372,7 +372,7 @@ ul,ol{list-style:none}
 .btn-ghost:hover{background:rgba(255,255,255,0.15)}
 
 /* ── Footer ── */
-.footer{background:var(--son-dark);color:rgba(255,255,255,0.6);padding:56px 0 36px}
+.footer{background:var(--son-navy);color:rgba(255,255,255,0.6);padding:56px 0 36px}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;margin-bottom:44px}
 .ft-brand{font-size:19px;font-weight:800;color:#fff;margin-bottom:6px}
 .ft-brand .s{color:var(--son-s)}.ft-brand .o{color:var(--son-o)}.ft-brand .n{color:var(--son-n)}
@@ -386,20 +386,40 @@ ul,ol{list-style:none}
 @media(max-width:680px){.footer-grid{grid-template-columns:1fr;gap:28px}.ft-bottom{flex-direction:column;align-items:flex-start}}
 
 /* ── Popup ── */
-.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px}
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;transition:background 0.4s ease;pointer-events:none}
+.popup-overlay.visible{background:rgba(0,0,0,0.72);pointer-events:auto}
 .popup-overlay.hidden{display:none}
-.popup-box{background:#fff;border-radius:var(--radius-lg);max-width:580px;width:100%;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.3);position:relative}
-.popup-placeholder{width:100%;min-height:280px;background:var(--gradient-son);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:40px;text-align:center}
-.popup-placeholder h3{font-size:26px;font-weight:900;color:#fff}
-.popup-placeholder p{font-size:15px;color:rgba(255,255,255,0.85)}
-.popup-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,0.5);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.popup-x:hover{background:rgba(0,0,0,0.8)}
-.popup-foot{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;background:#f8f9fb}
+.popup-box{opacity:0;transform:scale(0.88) translateY(24px);transition:opacity 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+.popup-overlay.visible .popup-box{opacity:1;transform:scale(1) translateY(0)}
+.popup-box{background:#fff;border-radius:20px;max-width:600px;width:calc(100% - 40px);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 100px rgba(0,0,0,0.4);position:relative}
+/* 슬라이더 */
+.popup-slider{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#111}
+.popup-slides{display:flex;width:100%;height:100%;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1)}
+.popup-slide{min-width:100%;height:100%;position:relative}
+.popup-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.popup-slide-placeholder{width:100%;height:100%;background:var(--gradient-son);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:48px 36px;text-align:center}
+.popup-slide-placeholder h3{font-size:30px;font-weight:900;color:#fff;line-height:1.3}
+.popup-slide-placeholder p{font-size:16px;color:rgba(255,255,255,0.9);line-height:1.7}
+/* 화살표 */
+.popup-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.25);backdrop-filter:blur(6px);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s;z-index:10;border:none}
+.popup-arrow:hover{background:rgba(255,255,255,0.45)}
+.popup-arrow.prev{left:14px}
+.popup-arrow.next{right:14px}
+.popup-arrow.hidden-arrow{display:none}
+/* 닷 */
+.popup-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:10}
+.popup-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.5);cursor:pointer;transition:background 0.2s,transform 0.2s;border:none}
+.popup-dot.active{background:#fff;transform:scale(1.3)}
+/* 닫기 */
+.popup-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.55);color:#fff;font-size:17px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;transition:background 0.2s;border:none}
+.popup-x:hover{background:rgba(0,0,0,0.85)}
+/* 하단 */
+.popup-foot{flex-shrink:0;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;background:#f8f9fb;border-top:1px solid #eee}
 .popup-today-lbl{font-size:13px;color:var(--color-text-light);cursor:pointer}
 
 /* ── Admin ── */
-.admin-btn-float{position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;background:var(--son-navy);color:#fff;font-size:20px;z-index:8000;display:none;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 4px 16px rgba(0,0,0,0.25)}
-.admin-btn-float.unlocked{display:flex}
+.admin-btn-float{position:fixed;right:24px;bottom:80px;width:48px;height:48px;border-radius:50%;background:var(--son-navy);color:#fff;font-size:20px;z-index:8000;display:flex;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 4px 16px rgba(0,0,0,0.25)}
+.admin-btn-float.unlocked{display:flex}/* always visible */
 .admin-btn-float:hover{background:var(--son-s);transform:rotate(30deg)}
 .admin-panel{position:fixed;right:-400px;bottom:0;top:0;width:360px;background:#fff;z-index:9500;box-shadow:-8px 0 40px rgba(0,0,0,0.15);transition:right 0.4s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;padding:28px 20px}
 .admin-panel.open{right:0}
@@ -461,6 +481,199 @@ ul,ol{list-style:none}
   .hist-content{padding:48px 20px}
   .hist-title{font-size:24px}
 }
+
+@media(max-width:768px){
+  .hero-badge{font-size:12px;padding:9px 16px;margin-bottom:24px;white-space:normal;text-align:center;word-break:keep-all;max-width:90vw}
+  .hero-content{padding:0 16px}
+  .hero-title{font-size:clamp(28px,8vw,44px);margin-bottom:20px}
+  .hero-sub{font-size:15px}
+}
+
+/* ── S.O.N 핵심 강조 ── */
+.son-em {
+  font-style:normal;
+  font-weight:800;
+  background:var(--gradient-son);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:inline;
+  position:relative;
+}
+.son-em::after {
+  content:'';
+  position:absolute;
+  left:0; bottom:-1px;
+  width:100%; height:2px;
+  background:var(--gradient-son);
+  border-radius:2px;
+  opacity:0.5;
+}
+
+/* ── TEETH 핵심 강조 ── */
+.teeth-em {
+  font-style:normal;
+  font-weight:700;
+  background:none;
+  -webkit-text-fill-color:inherit;
+  border-bottom:2px solid currentColor;
+  padding-bottom:1px;
+}
+
+/* ── IMAGE PARALLAX / ZOOM-ON-ENTRY ─────────────────────────── */
+.img-reveal-wrap{overflow:hidden;border-radius:inherit;display:block}
+.img-reveal-wrap img,.img-reveal-wrap video{
+  transform:scale(1.12);
+  transition:transform 1.6s cubic-bezier(.16,1,.3,1);
+  will-change:transform;
+  display:block;width:100%;
+}
+.img-reveal-wrap.ir-visible img,.img-reveal-wrap.ir-visible video{
+  transform:scale(1.0);
+}
+/* Parallax scroll shift on big images */
+.px-img{will-change:transform;transition:none}
+/* Section image zoom on hover too */
+.prog-photo{overflow:hidden}
+.prog-photo img{transform:scale(1.1);transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.prog-photo.ir-visible img{transform:scale(1.0)}
+.prog-row:hover .prog-photo img{transform:scale(1.06)!important}
+/* Gallery */
+.gal-item{overflow:hidden}
+.gal-item img{transform:scale(1.1);transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.gal-item.ir-visible img{transform:scale(1.0)}
+.gal-item:hover img{transform:scale(1.06)!important}
+/* Doctor photos */
+.doctor-photo-wrap{overflow:hidden;border-radius:var(--radius-lg)}
+.doctor-photo-wrap img{transform:scale(1.08);transition:transform 1.4s cubic-bezier(.16,1,.3,1);object-fit:cover;width:100%;height:100%}
+.doctor-photo-wrap.ir-visible img{transform:scale(1.0)}
+/* feat-wrap big image */
+.feat-wrap{overflow:hidden}
+.feat-wrap .px-img{transform:scale(1.1) translateY(0px)}
+/* Promise side image parallax */
+.promise-group-img{overflow:hidden}
+.promise-group-img .px-img{transform:scale(1.05) translateY(0px)}
+
+/* ── VIDEO SECTION ─────────────────────────────────────── */
+.video-section{position:relative;width:100%;padding:0;overflow:hidden;isolation:isolate;z-index:1}
+.video-inner{position:relative;width:100%;height:70vh;min-height:400px;max-height:720px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000}
+.video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
+.video-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.62);z-index:1}
+.video-content{position:relative;z-index:2;text-align:center;color:#fff;padding:0 20px}
+.video-eyebrow{font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:16px;font-weight:500}
+.video-title{font-size:clamp(32px,5vw,60px);font-weight:900;line-height:1.25;letter-spacing:-0.03em;margin-bottom:20px;opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s cubic-bezier(.16,1,.3,1)}
+.video-sub{font-size:16px;color:rgba(255,255,255,0.75);opacity:0;transform:translateY(20px);transition:opacity 1s ease 0.2s,transform 1s cubic-bezier(.16,1,.3,1) 0.2s}
+.video-section.vid-visible .video-title,.video-section.vid-visible .video-sub{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.video-inner{height:50vh;min-height:280px}.video-title{font-size:28px}}
+
+
+
+/* ══ TREATMENT CARD VIEWER ══════════════════════════════════════ */
+.treat-driver{position:relative}
+.treat-sticky{
+  position:sticky;top:0;height:100vh;height:100svh;
+  overflow:hidden;background:#0f1623;
+  display:flex;flex-direction:column;
+}
+/* 상단 HUD */
+.treat-hud{
+  flex-shrink:0;padding:18px 32px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:10;
+}
+.treat-hud-cat{font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.treat-hud-counter{font-size:12px;font-weight:600;color:rgba(255,255,255,0.35);}
+.treat-hud-progress{position:absolute;bottom:0;left:0;height:2px;background:var(--gradient-son);transition:width 0.55s cubic-bezier(.16,1,.3,1);}
+
+/* 스테이지 */
+.treat-slide-stage{
+  flex:1;position:relative;
+  padding:0 clamp(20px,5vw,80px) clamp(16px,3vh,36px);
+}
+
+/* 개별 카드 */
+.treat-slide{
+  position:absolute;
+  inset:0;margin:0 clamp(20px,5vw,80px) clamp(16px,3vh,36px);
+  border-radius:24px;overflow:hidden;
+  background:#fff;
+  display:grid;grid-template-columns:1fr 1fr;
+  transform:scale(0.8) translateY(8%);
+  opacity:0;
+  transition:transform 0.85s cubic-bezier(0.16,1,0.3,1),opacity 0.75s ease;
+  pointer-events:none;
+  will-change:transform,opacity;
+  box-shadow:0 40px 100px rgba(0,0,0,0.55);
+}
+.treat-slide.ts-active{transform:scale(1) translateY(0);opacity:1;pointer-events:auto;}
+.treat-slide.ts-past{transform:scale(0.84) translateY(-7%);opacity:0;}
+
+/* 왼쪽: 텍스트 */
+.treat-slide-text{
+  padding:clamp(32px,5vh,64px) clamp(28px,4vw,56px);
+  display:flex;flex-direction:column;justify-content:center;
+  background:#fff;
+}
+/* 오른쪽: 배경색 패널 */
+.treat-slide-visual{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;position:relative;overflow:hidden;
+}
+.treat-slide-visual::before{
+  content:'';position:absolute;inset:0;
+  background:inherit;
+}
+.treat-slide-visual-num{
+  font-size:clamp(100px,14vw,180px);font-weight:900;
+  line-height:1;letter-spacing:-0.06em;
+  opacity:0.15;position:relative;z-index:1;
+  transition:opacity 0.6s ease;
+}
+.treat-slide.ts-active .treat-slide-visual-num{opacity:0.25;}
+.treat-slide-visual-title{
+  font-size:clamp(14px,1.8vw,20px);font-weight:800;
+  text-align:center;padding:0 24px;word-break:keep-all;
+  opacity:0.6;position:relative;z-index:1;
+}
+.treat-slide-visual:has(.treat-slide-visual-img) .treat-slide-visual-title{
+  display:none;
+}
+.treat-slide-visual-img{
+  width:100%;height:100%;
+  object-fit:contain;
+  object-position:center;
+  padding:20px;
+  box-sizing:border-box;
+  position:absolute;inset:0;z-index:2;
+}
+
+/* 텍스트 요소 */
+.treat-slide-cat-badge{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.treat-slide-cat-tag{font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;padding:5px 14px;border-radius:100px;}
+.treat-slide-cat-name{font-size:12px;font-weight:600;color:var(--color-text-muted);}
+.treat-slide-title{
+  font-size:clamp(20px,2.6vw,34px);font-weight:900;
+  color:var(--son-navy);line-height:1.25;letter-spacing:-0.025em;
+  margin-bottom:10px;word-break:keep-all;
+}
+.treat-slide-subtitle{font-size:14px;font-weight:700;margin-bottom:12px;}
+.treat-slide-body{font-size:clamp(13px,1.2vw,15px);color:var(--color-text-light);line-height:1.9;word-break:keep-all;}
+
+/* 도트 */
+.treat-dots{flex-shrink:0;display:flex;justify-content:center;gap:8px;padding:14px 0 18px;z-index:10;}
+.treat-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.28);cursor:pointer;transition:all 0.3s;border:none;}
+.treat-dot.td-active{width:24px;border-radius:3px;background:rgba(255,255,255,0.85);}
+
+/* 모바일 */
+@media(max-width:768px){
+  .treat-slide{grid-template-columns:1fr;grid-template-rows:1fr auto;}
+  .treat-slide-visual{min-height:120px;max-height:160px;}
+  .treat-slide-visual-num{font-size:80px;}
+  .treat-slide-text{padding:24px 22px 28px;}
+  .treat-slide-title{font-size:clamp(17px,5vw,22px);}
+  .treat-slide-body{font-size:13px;}
+  .treat-hud{padding:12px 18px 10px;}
+}
 </style>
 </head>
 <body>
@@ -469,18 +682,24 @@ ul,ol{list-style:none}
 <!-- POPUP -->
 <div class="popup-overlay hidden" id="popupOverlay">
   <div class="popup-box">
-    <div class="popup-img-wrap">
-      <div id="popupContent">
-        <div class="popup-placeholder">
-          <h3>🏆 보건복지부장관상 수상</h3>
-          <p>우리곁, 진료잘하는 연세손치과의원<br>임플란트 10,000케이스 경험의 전문의료팀</p>
+    <div class="popup-slider" id="popupSlider">
+      <div class="popup-slides" id="popupSlides">
+        <!-- 슬라이드는 JS로 생성 -->
+        <div class="popup-slide">
+          <div class="popup-slide-placeholder">
+            <h3>🏆 보건복지부장관상 수상</h3>
+            <p>우리곁, 진료잘하는 연세손치과의원<br>임플란트 12,000케이스 경험의 전문의료팀</p>
+          </div>
         </div>
       </div>
-      <div class="popup-x" onclick="closePopup()">✕</div>
+      <button class="popup-arrow prev" id="popupPrev" onclick="popupSlide(-1)">&#8249;</button>
+      <button class="popup-arrow next" id="popupNext" onclick="popupSlide(1)">&#8250;</button>
+      <div class="popup-dots" id="popupDots"></div>
+      <button class="popup-x" onclick="closePopup()">✕</button>
     </div>
     <div class="popup-foot">
       <label class="popup-today-lbl"><input type="checkbox" id="todayChk" onchange="checkToday()"> &nbsp;오늘 하루 보지 않기</label>
-      <button onclick="closePopup()" style="font-size:13px;color:var(--color-text-muted);cursor:pointer">닫기</button>
+      <button onclick="closePopup()" style="font-size:13px;color:var(--color-text-muted);cursor:pointer;background:none;border:none">닫기</button>
     </div>
   </div>
 </div>
@@ -493,20 +712,18 @@ ul,ol{list-style:none}
   <div class="a-group">
     <label>팝업 활성화</label>
     <label class="a-check-row"><input type="checkbox" id="popupEnabled" onchange="saveEnabled()"> &nbsp;사이트 접속 시 팝업 표시</label>
+    <button class="a-btn" style="margin-top:8px" onclick="forceShowPopup()">👁 팝업 지금 보기</button>
   </div>
   <div class="a-group">
-    <label>팝업 이미지</label>
-    <small style="color:var(--color-text-muted);font-size:12px;display:block;margin-bottom:6px">권장: 580×360px 이상 JPG/PNG</small>
-    <input type="file" accept="image/*" id="popupFile" onchange="previewImg('popup')">
-    <img id="popupPrev" class="a-preview">
-    <button class="a-btn" onclick="saveImg('popup')">팝업 이미지 저장</button>
-    <button class="a-btn red" onclick="clearImg('popup')" style="margin-top:5px">이미지 초기화</button>
-  </div>
-  <div class="a-group">
-    <label>히어로 배경 이미지</label>
-    <input type="file" accept="image/*" id="heroFile" onchange="previewImg('hero')">
-    <img id="heroPrev" class="a-preview">
-    <button class="a-btn" onclick="saveImg('hero')">히어로 이미지 저장</button>
+    <label>팝업 이미지 슬라이드</label>
+    <small style="color:var(--color-text-muted);font-size:12px;display:block;margin-bottom:8px">최대 5장 · JPG/PNG · 정사각형 권장</small>
+    <div id="popupImgList" style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px"></div>
+    <label style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:2px dashed #cbd5e1;border-radius:8px;cursor:pointer;font-size:13px;color:#64748b;font-weight:500">
+      <span style="font-size:20px">＋</span> 이미지 추가
+      <input type="file" accept="image/*" multiple id="popupFileAdd" style="display:none" onchange="addPopupImages(this)">
+    </label>
+    <button class="a-btn" style="margin-top:8px" onclick="savePopupImages()">💾 팝업 이미지 저장</button>
+    <button class="a-btn red" style="margin-top:5px" onclick="clearPopupImages()">전체 초기화</button>
   </div>
 </div>
 
@@ -514,7 +731,7 @@ ul,ol{list-style:none}
 <header class="header" id="header">
   <div class="header-inner">
     <a href="#" class="logo">
-      <img src="images/logo-white-bg.png" alt="연세손치과의원 로고" style="height:52px;object-fit:contain;display:block">
+      <img src="images/logo-white-bg.png" alt="연세손치과의원 로고" style="height:80px;object-fit:contain;display:block;max-width:220px">
     </a>
     <nav class="nav" id="nav">
       <a href="#about" class="nav-link" data-section="about">병원소개</a>
@@ -550,7 +767,7 @@ ul,ol{list-style:none}
   </div>
   <div class="hero-content">
     <div class="hero-badge"><span class="hero-badge-dot"></span>🏆 보건복지부장관상 수상 · 임플란트 10,000케이스</div>
-    <h1 class="hero-title">우리 곁,<br>진료 잘하는<br>연세손치과의원</h1>
+    <h1 class="hero-title">13년동안 한자리에서<br>우리 곁, 진료 잘하는<br>연세손치과의원</h1>
     <p class="hero-sub">연세대학교 치과대학 출신 전문의료진이<br>가족처럼 정성껏 진료합니다</p>
     <div class="hero-actions">
       <a href="tel:032-505-2868" class="btn-primary">📞 지금 예약 전화</a>
@@ -603,25 +820,37 @@ ul,ol{list-style:none}
         <div class="son-letter s">S</div>
         <div class="son-word">Skillful</div>
         <div class="son-title">손기술 좋은 치과</div>
-        <p class="son-desc">연세대 치과대학 졸업 후 세브란스병원 수련을 거친 전문의가 통합적 진료와 자연치아 보존을 최우선으로, 정석대로 치료합니다.</p>
+        <p class="son-desc">연세대 치과대학 졸업 후 세브란스병원 수련을 거친 전문의가 통합적 진료와 <strong class="son-em">자연치아 보존</strong>을 최우선으로, 정석대로 치료합니다.</p>
       </div>
       <div class="son-card fade-in d2">
         <div class="son-letter o">O</div>
         <div class="son-word">One of the best</div>
         <div class="son-title">손에 꼽는 치과</div>
-        <p class="son-desc">독자적 진료 매뉴얼과 환자 중심의 최적 치료. 아픔↓ 시간↓ 비용↓, 정확성↑ 기능↑ 만족도↑의 3DOWN 3UP을 실현합니다.</p>
+        <p class="son-desc">독자적 진료 매뉴얼과 환자 중심의 최적 치료. 아픔↓ <strong class="son-em">시간↓ 비용↓</strong>, 정확성↑ <strong class="son-em">기능↑ 만족도↑</strong>의 3DOWN 3UP을 실현합니다.</p>
       </div>
       <div class="son-card fade-in d3">
         <div class="son-letter n">N</div>
         <div class="son-word">Neighborly</div>
         <div class="son-title">손 내미는 치과</div>
-        <p class="son-desc">지역사회와 함께 성장하는 치과. 언제나 먼저 손 내밀고, 이웃처럼 다가가는 따뜻한 치료를 약속드립니다.</p>
+        <p class="son-desc">지역사회와 <strong class="son-em">함께 성장하는</strong> 치과. 언제나 먼저 손 내밀고, 이웃처럼 다가가는 따뜻한 치료를 약속드립니다.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- TRUST -->
+
+<!-- ── VIDEO SECTION ───────────────────────────────────────────── -->
+<section class="video-section">
+  <div class="video-inner">
+    <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="images/clinic1.jpg">
+      <source src="images/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+  </div>
+</section>
+
 <section class="trust-section">
   <div class="container">
     <div class="trust-grid">
@@ -757,11 +986,11 @@ ul,ol{list-style:none}
       </div>
       <div class="values-right fade-in d1">
         <div class="values-list">
-          <div class="val-item"><div class="val-letter vl-t1">T</div><div><div class="val-word">Total Dentistry</div><div class="val-text">통합 — 통합치의학 전문의 기반 진료</div><div class="val-desc">전체 치료계획과 시기별 최적 치료를 한 곳에서</div></div></div>
-          <div class="val-item"><div class="val-letter vl-e1">E</div><div><div class="val-word">Excellence</div><div class="val-text">최적 — 최적의 치료만 제시</div><div class="val-desc">과잉진료 없이 꼭 필요한 치료만 권유합니다</div></div></div>
-          <div class="val-item"><div class="val-letter vl-e2">E</div><div><div class="val-word">Execution</div><div class="val-text">정도 — 가이드대로 원칙 중심 진료</div><div class="val-desc">연세대가 가르쳐준 그대로, 정석대로 치료합니다</div></div></div>
-          <div class="val-item"><div class="val-letter vl-t2">T</div><div><div class="val-word">Tenacity</div><div class="val-text">끈기 — 끝까지 환자를 포기하지 않음</div><div class="val-desc">철저한 A/S 사후관리로 오랜 관계를 이어갑니다</div></div></div>
-          <div class="val-item"><div class="val-letter vl-h">H</div><div><div class="val-word">Health</div><div class="val-text">건강 — 직원과 지역사회 건강에 기여</div><div class="val-desc">무료 틀니·임플란트 제공 등 지역사회 공헌</div></div></div>
+          <div class="val-item"><div class="val-letter vl-t1">T</div><div><div class="val-word">Total Dentistry</div><div class="val-text">통합 — 통합치의학 전문의 기반 진료</div><div class="val-desc">전체 치료계획과 시기별 최적 치료를 <strong class="teeth-em" style="color:var(--son-s)">한 곳에서</strong></div></div></div>
+          <div class="val-item"><div class="val-letter vl-e1">E</div><div><div class="val-word">Excellence</div><div class="val-text">최적 — 최적의 치료만 제시</div><div class="val-desc"><strong class="teeth-em" style="color:var(--son-o)">과잉진료 없이</strong> 꼭 필요한 치료만 권유합니다</div></div></div>
+          <div class="val-item"><div class="val-letter vl-e2">E</div><div><div class="val-word">Execution</div><div class="val-text">정도 — 가이드대로 원칙 중심 진료</div><div class="val-desc">연세대가 가르쳐준 그대로, <strong class="teeth-em" style="color:var(--son-o)">정석대로</strong> 치료합니다</div></div></div>
+          <div class="val-item"><div class="val-letter vl-t2">T</div><div><div class="val-word">Tenacity</div><div class="val-text">끈기 — 끝까지 환자를 포기하지 않음</div><div class="val-desc">철저한 A/S 사후관리로 <strong class="teeth-em" style="color:var(--son-s)">오랜 관계</strong>를 이어갑니다</div></div></div>
+          <div class="val-item"><div class="val-letter vl-h">H</div><div><div class="val-word">Health</div><div class="val-text">건강 — 직원과 지역사회 건강에 기여</div><div class="val-desc">무료 틀니·임플란트 제공 등 <strong class="teeth-em" style="color:var(--son-n)">지역사회 공헌</strong></div></div></div>
         </div>
       </div>
     </div>
@@ -783,7 +1012,7 @@ ul,ol{list-style:none}
         </div>
         <div class="prog-info">
           <span class="prog-tag bto">BTO Clinic®</span>
-          <img src="images/bto-logo.png" alt="BTO Clinic 로고" style="height:56px;object-fit:contain;margin-bottom:16px;display:block">
+          <img src="images/bto-logo.png" alt="BTO Clinic 로고" style="height:56px;object-fit:contain;margin-top:20px;margin-bottom:24px;display:block">
           <h3 class="prog-title">미백·턱관절·교정<br>전문 클리닉</h3>
           <p class="prog-desc">연세손치과 3층에서 운영하는 전문 진료 공간입니다.<br>미백·턱관절·교정 세 가지 분야를 한 곳에서, 전문적으로 진료합니다.</p>
           <div class="bto-items">
@@ -805,6 +1034,7 @@ ul,ol{list-style:none}
       <div class="prog-row reverse fade-in">
         <div class="prog-info">
           <span class="prog-tag momki">맘키룸 Mom Ki Room</span>
+          <img src="images/momki-logo.png" alt="맘키룸 로고" style="height:60px;object-fit:contain;object-position:left;margin-top:16px;margin-bottom:20px;display:block;max-width:100%">
           <h3 class="prog-title">육아맘을 위한<br>전용 키즈룸</h3>
           <p class="prog-desc">엄마가 치료받는 동안 아이는 전용 맘키룸에서 안전하고 즐겁게!<br>엄마와 아이의 정기 치아건강을 함께 챙겨드립니다.</p>
           <div class="bto-items">
@@ -832,6 +1062,7 @@ ul,ol{list-style:none}
         </div>
         <div class="prog-info">
           <span class="prog-tag plant">S.O.N Plant®</span>
+          <img src="images/손플란트로고.png" alt="S.O.N Plant 로고" style="height:60px;object-fit:contain;object-position:left;margin-top:16px;margin-bottom:20px;display:block;max-width:100%">
           <h3 class="prog-title">연세손치과<br>임플란트 시스템</h3>
           <p class="prog-desc">정확한 진단 → 꼭 필요한 부위만 → 고난도 정밀 치료 → 맞춤 설계.<br>12,000케이스 이상의 경험이 만드는 신뢰.</p>
           <div class="bto-items">
@@ -873,7 +1104,7 @@ ul,ol{list-style:none}
         <p class="treat-cat-desc">충치·신경치료·수복 등<br>치아를 끝까지 살리는 기본 진료</p>
       </div>
 
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div class="treat-block-header">
           <span class="treat-block-num">01</span>
           <h3 class="treat-block-title">치경부 마모</h3>
@@ -887,7 +1118,7 @@ ul,ol{list-style:none}
         </div>
       </div>
 
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div class="treat-block-header">
           <span class="treat-block-num">02</span>
           <h3 class="treat-block-title">신경치료</h3>
@@ -901,7 +1132,7 @@ ul,ol{list-style:none}
         </div>
       </div>
 
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div class="treat-block-header">
           <span class="treat-block-num">03</span>
           <h3 class="treat-block-title">인레이</h3>
@@ -915,7 +1146,7 @@ ul,ol{list-style:none}
         </div>
       </div>
 
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div class="treat-block-header">
           <span class="treat-block-num">04</span>
           <h3 class="treat-block-title">크라운</h3>
@@ -940,23 +1171,23 @@ ul,ol{list-style:none}
         <p class="treat-cat-desc">12,000케이스 이상의 경험으로<br>안전하고 정확한 임플란트</p>
       </div>
 
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div style="display:flex;flex-direction:column;gap:56px">
           <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">S.O.N Plant System</p>
-              <p style="font-size:15px;color:var(--son-navy);font-weight:700;margin-bottom:12px">꼭 필요한 곳에만, 정확하게</p>
-              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">정밀 CT 진단을 바탕으로 꼭 필요한 부위에만 식립하고, 고난도 부위도 정밀하게 치료합니다. 환자의 교합력에 맞춘 맞춤 설계로 오래도록 사용할 수 있습니다.</p>
+              <p style="font-size:22px;color:var(--son-navy);font-weight:900;margin-bottom:14px;line-height:1.3">연세손치과<br>S.O.N Plant 시스템이란?</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">손기요 대표원장이 12,000케이스 이상의 임플란트 경험을 바탕으로 정립한 독자적 시스템입니다. 정밀 CT 진단 → 맞춤 식립 설계 → 고난도 부위 정밀 식립 → 교합력 맞춤 보철까지 모든 과정을 한 원장이 처음부터 끝까지 직접 진행합니다. 꼭 필요한 곳에만, 과잉 없이, 오래가도록 치료합니다.</p>
             </div>
             <img src="images/treatment-son-plant.png" alt="S.O.N Plant 시스템" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
           </div>
           <div class="treat-inner">
             <div>
-              <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Overdenture</p>
-              <p style="font-size:15px;color:var(--son-navy);font-weight:700;margin-bottom:12px">임플란트로 고정하는 틀니</p>
-              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">여러 개의 치아를 잃은 경우, 소수의 임플란트로 틀니를 고정해 안정적으로 사용할 수 있습니다. 일반 틀니보다 씹는 힘이 강하고 이물감이 적습니다.</p>
+              <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Implant Overdenture</p>
+              <p style="font-size:22px;color:var(--son-navy);font-weight:900;margin-bottom:14px;line-height:1.3">하악 임플란트<br>오버덴처란?</p>
+              <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">여러 개의 치아를 잃은 경우, 소수의 임플란트(보통 2~4개)를 심어 틀니를 단단히 고정하는 방법입니다. 기존 틀니의 흔들림·이물감·씹기 불편을 한 번에 해결합니다. 전체 임플란트보다 비용이 적고, 일반 틀니보다 안정성이 훨씬 뛰어나 어르신 환자분들께 특히 추천드리는 치료입니다.</p>
             </div>
-            <img src="images/treatment-overdenture.png" alt="임플란트 틀니 오버덴쳐" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
+            <img src="images/treatment-overdenture.png" alt="하악 임플란트 오버덴처" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
           </div>
         </div>
       </div>
@@ -970,7 +1201,7 @@ ul,ol{list-style:none}
           <h3 class="treat-cat-title">교정 클리닉</h3>
         </div>
       </div>
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-o);font-weight:700;margin-bottom:12px">전원 자가결찰 브라켓으로 더 빠르고 정확하게</p>
@@ -1000,7 +1231,7 @@ ul,ol{list-style:none}
         </div>
         <p class="treat-cat-desc">건강하면서도 아름다운<br>자연스러운 미소를 만들어드립니다</p>
       </div>
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div class="treat-inner">
           <div>
             <p style="font-size:15px;color:var(--son-s);font-weight:700;margin-bottom:12px">한 번에 끝내지 않습니다 — 단계적으로 오래가는 미백</p>
@@ -1028,7 +1259,7 @@ ul,ol{list-style:none}
         </div>
         <p class="treat-cat-desc">일반 치과에서 다루기 어려운<br>고난도 특수 진료를 전문적으로 시행합니다</p>
       </div>
-      <div class="treat-block fade-in">
+      <div class="treat-block">
         <div style="display:flex;flex-direction:column;gap:56px">
 
           <!-- 턱관절 -->
@@ -1045,7 +1276,7 @@ ul,ol{list-style:none}
           <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-n);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Apicoectomy</p>
-              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">현미경 치근단절제술</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">현미경 치근단절제술이란?</p>
               <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">신경치료 후에도 치근단 주변에 염증이나 통증이 지속되는 경우, 현미경 확대 시야 아래에서 감염된 치근단 부위를 외과적으로 정밀 제거합니다. 최소한의 절제로 치근단 병소를 안전하게 처리하여 자연치아를 보존하는 정밀 외과 수술입니다.</p>
             </div>
             <img src="images/치근단.png" alt="현미경 치근단절제술" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
@@ -1055,7 +1286,7 @@ ul,ol{list-style:none}
           <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-o);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Gingival Regeneration</p>
-              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">치은 재생술</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">치은재생술이란?</p>
               <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">잇몸이 내려앉거나 치주 조직이 손상된 경우, 잇몸선과 지지 조직을 재생·증대시켜 뿌리를 보호하고 치주 건강을 회복시킵니다. 퇴각·결손의 깊이와 범위를 정밀히 진단한 후 재생 재료를 세심하게 안정화해 노출된 뿌리를 덮고 잇몸 안정성을 장기적으로 유지합니다.</p>
             </div>
             <img src="images/치은재생.png" alt="치은재생술" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
@@ -1065,7 +1296,7 @@ ul,ol{list-style:none}
           <div class="treat-inner">
             <div>
               <p style="font-size:12px;font-weight:700;color:var(--son-s);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Cyst Removal</p>
-              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">낭종 제거술</p>
+              <p style="font-size:18px;font-weight:800;color:var(--son-navy);margin-bottom:12px">낭종제거술이란?</p>
               <p style="font-size:16px;color:var(--color-text-light);line-height:1.9;word-break:keep-all">치아나 턱뼈 주변에 생긴 낭종(병적 주머니)을 파노라마·CBCT로 정확히 진단하고, 수술적으로 제거하여 인접 치아와 뼈를 보존합니다. 병소를 명확히 제거하면서 치아·신경·뼈의 회복까지 고려하는 정밀 외과 치료로, 방치 시 주변 구조물 파괴로 이어질 수 있어 조기 치료가 중요합니다.</p>
             </div>
             <img src="images/낭종제거.png" alt="낭종제거술" style="width:100%;border-radius:var(--radius-md);object-fit:contain;background:#F8F9FB">
@@ -1168,12 +1399,12 @@ ul,ol{list-style:none}
       <p style="font-size:15px;color:var(--color-text-light);line-height:1.7;word-break:keep-all">10년 넘게 꾸준히 내원하셔서 관리를 받으시며 연세손치과의 임플란트를 오래도록 사용하신 환자분들께 드리는 감사의 자리.<br>10주년 기념 행사에서 오래오래상을 수상하신 소중한 분들입니다.</p>
     </div>
     <div class="fade-in" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:20px">
-      <img src="images/10year-implant-patients.jpg" alt="10주년 오래오래상 수상 환자분들" style="width:100%;display:block;object-fit:cover">
+      <img src="images/10year-implant-patients.jpg" alt="10주년 오래오래상 수상 환자분들" class="px-img" style="width:100%;display:block;object-fit:cover">
     </div>
   </div>
   <!-- 전체사진 위에 텍스트 오버레이 -->
   <div class="feat-wrap" style="position:relative;overflow:hidden">
-    <img src="images/전체사진.jpg" alt="10주년 행사 전체사진" style="width:100%;display:block;object-fit:cover;min-height:620px">
+    <img src="images/전체사진.jpg" alt="10주년 행사 전체사진" class="px-img" style="width:100%;display:block;object-fit:cover;min-height:620px">
     <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(13,20,33,0.97) 0%, rgba(13,20,33,0.88) 55%, rgba(13,20,33,0.35) 100%)"></div>
     <div class="container fade-in feat-overlay" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;padding-bottom:60px">
       <h4 style="font-size:clamp(28px,3.2vw,44px);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.35;margin-bottom:44px;text-align:center;word-break:keep-all;text-shadow:0 2px 24px rgba(0,0,0,0.6)">연세손치과의 치료는<br><em style="font-style:normal;background:var(--gradient-son);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">시간이 지나도 신뢰할 수 있습니다</em></h4>
@@ -1287,7 +1518,7 @@ ul,ol{list-style:none}
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="ft-brand"><span class="s">S</span><span class="o">O</span><span class="n">N</span></div>
+        <img src="images/logo-dark-bg.png" alt="연세손치과의원" style="height:64px;object-fit:contain;display:block;margin-bottom:4px">
         <p class="ft-tagline">우리 곁, 진료 잘하는 치과</p>
         <p class="ft-desc">연세대학교 치과대학 출신 전문의료진이<br>가족처럼 정성껏 진료합니다.</p>
       </div>
@@ -1334,6 +1565,7 @@ const scrollBar = document.createElement('div');
 scrollBar.id='scroll-bar'; document.body.prepend(scrollBar);
 const hdr = document.querySelector('.header');
 const heroBg = document.getElementById('heroBg');
+// 히어로 배경: CSS에서 exterior.png 사용 (images/exterior.png)
 const navLinks = document.querySelectorAll('.nav-link[data-section]');
 const sections = ['about','doctors','treatments','programs','reviews','location'];
 function onScroll(){
@@ -1357,62 +1589,193 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// ── 팝업 ─────────────────────────────────────────────────────────────────────
-const POPUP_DEFAULT={bg:'gradient',title:'🏆 보건복지부장관상 수상',body:'우리곁, 진료잘하는 연세손치과의원\n임플란트 12,000케이스 경험의 전문의료팀',btn:'진료 예약하기',link:'#location',img:''};
+// ── 팝업 슬라이더 ─────────────────────────────────────────────────────────────
+let popupIdx = 0;
+let popupImages = []; // [{src: dataUrl}, ...]
+let popupAutoTimer = null;
+const POPUP_IMAGES_KEY = 'popupImages2';
 
-function getPopupData(){try{return JSON.parse(localStorage.getItem('popupDesign'))||POPUP_DEFAULT;}catch(e){return POPUP_DEFAULT;}}
-
-function renderPopup(d){
-  d=d||getPopupData();
-  const content=document.getElementById('popupContent'); if(!content)return;
-  const bgs={gradient:'background:linear-gradient(135deg,#ED4824 0%,#58B847 50%,#00A2E8 100%)',navy:'background:#1A2942',white:'background:#fff',image:d.img?`background:url('${d.img}') center/cover no-repeat`:'background:linear-gradient(135deg,#ED4824,#00A2E8)'};
-  const bgStyle=bgs[d.bg]||bgs.gradient;
-  const dark=d.bg!=='white', tc=dark?'#fff':'#1A2942', sc=dark?'rgba(255,255,255,0.82)':'#555';
-  const overlay=d.bg==='image'&&d.img?'<div style="position:absolute;inset:0;background:rgba(13,20,33,0.55)"></div>':'';
-  const btnHtml=d.btn?`<a href="${d.link||'#'}" onclick="closePopup()" style="display:inline-block;margin-top:20px;padding:12px 28px;background:#fff;color:#1A2942;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none">${d.btn}</a>`:'';
-  content.innerHTML=`<div style="${bgStyle};padding:44px 36px;text-align:center;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">${overlay}<div style="position:relative;z-index:1"><p style="font-size:26px;font-weight:900;color:${tc};line-height:1.35;margin-bottom:12px;word-break:keep-all">${d.title}</p><p style="font-size:15px;color:${sc};line-height:1.7;white-space:pre-line">${d.body}</p>${btnHtml}</div></div>`;
+function getPopupImages(){
+  try { return JSON.parse(localStorage.getItem(POPUP_IMAGES_KEY)) || []; } catch(e){ return []; }
 }
 
-function closePopup(){document.getElementById('popupOverlay').classList.add('hidden');}
+function renderPopupSlider(images){
+  const slides = document.getElementById('popupSlides');
+  const dots = document.getElementById('popupDots');
+  if(!slides) return;
+  popupImages = images && images.length ? images : [];
+  popupIdx = 0;
+
+  if(popupImages.length === 0){
+    // 기본 placeholder
+    slides.innerHTML = `<div class="popup-slide"><div class="popup-slide-placeholder"><h3>🏆 보건복지부장관상 수상</h3><p>우리곁, 진료잘하는 연세손치과의원<br>임플란트 12,000케이스 경험의 전문의료팀</p></div></div>`;
+    if(dots) dots.innerHTML = '';
+    document.getElementById('popupPrev').style.display='none';
+    document.getElementById('popupNext').style.display='none';
+    return;
+  }
+
+  slides.innerHTML = popupImages.map((img,i)=>
+    `<div class="popup-slide"><img src="${img.src}" alt="팝업이미지${i+1}" loading="lazy"></div>`
+  ).join('');
+
+  if(dots){
+    dots.innerHTML = popupImages.map((_,i)=>
+      `<button class="popup-dot${i===0?' active':''}" onclick="goPopupSlide(${i})"></button>`
+    ).join('');
+  }
+
+  const showArrows = popupImages.length > 1;
+  document.getElementById('popupPrev').style.display = showArrows ? 'flex' : 'none';
+  document.getElementById('popupNext').style.display = showArrows ? 'flex' : 'none';
+
+  goPopupSlide(0, false);
+  startPopupAuto();
+}
+
+function goPopupSlide(idx, animate){
+  const slides = document.getElementById('popupSlides');
+  const dots = document.getElementById('popupDots');
+  if(!slides || !popupImages.length) return;
+  popupIdx = (idx + popupImages.length) % popupImages.length;
+  slides.style.transition = animate===false ? 'none' : 'transform 0.45s cubic-bezier(0.4,0,0.2,1)';
+  slides.style.transform = `translateX(-${popupIdx * 100}%)`;
+  if(dots){
+    dots.querySelectorAll('.popup-dot').forEach((d,i)=>d.classList.toggle('active', i===popupIdx));
+  }
+}
+
+function popupSlide(dir){
+  clearPopupAuto();
+  goPopupSlide(popupIdx + dir);
+  startPopupAuto();
+}
+
+function startPopupAuto(){
+  clearPopupAuto();
+  if(popupImages.length > 1){
+    popupAutoTimer = setInterval(()=>goPopupSlide(popupIdx+1), 4000);
+  }
+}
+function clearPopupAuto(){ if(popupAutoTimer){ clearInterval(popupAutoTimer); popupAutoTimer=null; } }
+
+function closePopup(){
+  const ov=document.getElementById('popupOverlay');
+  ov.classList.remove('visible');
+  setTimeout(()=>ov.classList.add('hidden'), 420);
+  clearPopupAuto();
+}
 function checkToday(){
-  if(document.getElementById('todayChk').checked){const e=new Date();e.setHours(23,59,59,0);localStorage.setItem('popupHideUntil',e.getTime());}
-  else localStorage.removeItem('popupHideUntil');
+  if(document.getElementById('todayChk').checked){
+    const e=new Date();e.setHours(23,59,59,0);
+    localStorage.setItem('popupHideUntil',e.getTime());
+    setTimeout(closePopup, 400);
+  } else {
+    localStorage.removeItem('popupHideUntil');
+  }
 }
 function saveEnabled(){localStorage.setItem('popupEnabled',document.getElementById('popupEnabled').checked?'1':'0');}
-function previewPopupImg(){
-  const file=document.getElementById('popupFile').files[0]; if(!file)return;
-  const r=new FileReader();
-  r.onload=e=>{const p=document.getElementById('popupImgPrev');p.src=e.target.result;p.style.display='block';};
-  r.readAsDataURL(file);
+function forceShowPopup(){
+  localStorage.removeItem('popupHideUntil'); // 숨김 설정 초기화
+  const ov=document.getElementById('popupOverlay');
+  if(ov){
+    ov.classList.remove('hidden');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>ov.classList.add('visible')));
+    startPopupAuto();
+  }
 }
-function savePopupDesign(){
-  const bg=document.querySelector('input[name="popupBg"]:checked')?.value||'gradient';
-  const imgSrc=document.getElementById('popupImgPrev').src||'';
-  const d={bg,img:bg==='image'?imgSrc:'',title:document.getElementById('popupTitle').value||POPUP_DEFAULT.title,body:document.getElementById('popupBody').value||POPUP_DEFAULT.body,btn:document.getElementById('popupBtn').value,link:document.getElementById('popupLink').value||'#location'};
-  localStorage.setItem('popupDesign',JSON.stringify(d));
-  renderPopup(d); alert('팝업이 저장되었습니다!');
+
+// ── 관리자: 팝업 이미지 관리 ─────────────────────────────────────────────────
+let pendingPopupImages = []; // 저장 전 임시 목록
+
+function loadAdminPopupImages(){
+  pendingPopupImages = getPopupImages().slice();
+  renderAdminImgList();
 }
-function previewPopupNow(){
-  const bg=document.querySelector('input[name="popupBg"]:checked')?.value||'gradient';
-  const imgSrc=document.getElementById('popupImgPrev').src||'';
-  const d={bg,img:bg==='image'?imgSrc:'',title:document.getElementById('popupTitle').value||POPUP_DEFAULT.title,body:document.getElementById('popupBody').value||POPUP_DEFAULT.body,btn:document.getElementById('popupBtn').value,link:document.getElementById('popupLink').value||'#location'};
-  renderPopup(d); document.getElementById('popupOverlay').classList.remove('hidden');
+
+function renderAdminImgList(){
+  const list = document.getElementById('popupImgList');
+  if(!list) return;
+  if(pendingPopupImages.length === 0){
+    list.innerHTML = '<p style="font-size:12px;color:#94a3b8;text-align:center;padding:8px 0">이미지 없음</p>';
+    return;
+  }
+  list.innerHTML = pendingPopupImages.map((img,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;background:#f8fafc;border-radius:8px;padding:6px 8px">
+      <img src="${img.src}" style="width:52px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0">
+      <span style="flex:1;font-size:12px;color:#64748b">${i+1}번 슬라이드</span>
+      ${i>0?`<button onclick="movePopupImg(${i},-1)" style="background:none;border:1px solid #cbd5e1;border-radius:4px;padding:2px 6px;font-size:12px;cursor:pointer">↑</button>`:''}
+      ${i<pendingPopupImages.length-1?`<button onclick="movePopupImg(${i},1)" style="background:none;border:1px solid #cbd5e1;border-radius:4px;padding:2px 6px;font-size:12px;cursor:pointer">↓</button>`:''}
+      <button onclick="removePopupImg(${i})" style="background:none;border:none;color:#ef4444;font-size:18px;cursor:pointer;line-height:1">×</button>
+    </div>
+  `).join('');
 }
-function resetPopupDesign(){localStorage.removeItem('popupDesign');renderPopup(POPUP_DEFAULT);loadAdminFields(POPUP_DEFAULT);alert('초기화되었습니다.');}
-function loadAdminFields(d){
-  const bg=document.querySelector(`input[name="popupBg"][value="${d.bg}"]`); if(bg)bg.checked=true;
-  document.getElementById('popupTitle').value=d.title||'';
-  document.getElementById('popupBody').value=d.body||'';
-  document.getElementById('popupBtn').value=d.btn||'';
-  document.getElementById('popupLink').value=d.link||'';
+
+function addPopupImages(input){
+  const files = Array.from(input.files);
+  const remaining = 5 - pendingPopupImages.length;
+  if(remaining <= 0){ alert('최대 5장까지 등록 가능합니다.'); input.value=''; return; }
+  const toAdd = files.slice(0, remaining);
+  let loaded = 0;
+  toAdd.forEach(file=>{
+    const r = new FileReader();
+    r.onload = e=>{
+      pendingPopupImages.push({src: e.target.result});
+      loaded++;
+      if(loaded === toAdd.length){ renderAdminImgList(); }
+    };
+    r.readAsDataURL(file);
+  });
+  input.value='';
+}
+
+function movePopupImg(idx, dir){
+  const newIdx = idx + dir;
+  if(newIdx < 0 || newIdx >= pendingPopupImages.length) return;
+  [pendingPopupImages[idx], pendingPopupImages[newIdx]] = [pendingPopupImages[newIdx], pendingPopupImages[idx]];
+  renderAdminImgList();
+}
+
+function removePopupImg(idx){
+  pendingPopupImages.splice(idx, 1);
+  renderAdminImgList();
+}
+
+function savePopupImages(){
+  try {
+    localStorage.setItem(POPUP_IMAGES_KEY, JSON.stringify(pendingPopupImages));
+    renderPopupSlider(pendingPopupImages);
+    alert('팝업 이미지가 저장되었습니다! (' + pendingPopupImages.length + '장)');
+  } catch(e) {
+    alert('저장 실패: 이미지 용량이 너무 클 수 있습니다. (' + e.message + ')');
+  }
+}
+
+function clearPopupImages(){
+  if(!confirm('팝업 이미지를 모두 삭제할까요?')) return;
+  pendingPopupImages = [];
+  localStorage.removeItem(POPUP_IMAGES_KEY);
+  renderAdminImgList();
+  renderPopupSlider([]);
+  alert('초기화되었습니다.');
 }
 
 // ── 초기화 ────────────────────────────────────────────────────────────────────
 (function(){
-  const d=getPopupData(); renderPopup(d); loadAdminFields(d);
+  // 팝업 슬라이더 초기화
+  const imgs = getPopupImages();
+  renderPopupSlider(imgs);
+  loadAdminPopupImages();
+  // 팝업 표시 여부
   const hide=localStorage.getItem('popupHideUntil');
   const off=localStorage.getItem('popupEnabled')==='0';
-  if(!off&&!(hide&&Date.now()<parseInt(hide)))setTimeout(()=>document.getElementById('popupOverlay')?.classList.remove('hidden'),500);
+  if(!off&&!(hide&&Date.now()<parseInt(hide))){
+    setTimeout(()=>{
+      const ov=document.getElementById('popupOverlay');
+      if(ov){ ov.classList.remove('hidden'); requestAnimationFrame(()=>requestAnimationFrame(()=>ov.classList.add('visible'))); }
+      startPopupAuto();
+    },800);
+  }
   const chk=document.getElementById('popupEnabled'); if(chk)chk.checked=localStorage.getItem('popupEnabled')!=='0';
 })();
 
@@ -1421,11 +1784,24 @@ function toggleMenu(){document.getElementById('nav').classList.toggle('open');}
 // ── 관리자 잠금 ───────────────────────────────────────────────────────────────
 const ADMIN_PW = 'son2024';  // ← 비밀번호 여기서 변경
 function toggleAdmin(){
+  // 온라인(GitHub Pages)에서는 비밀번호 확인
+  if(location.protocol !== 'file:' && sessionStorage.getItem('adminUnlocked') !== '1'){
+    const pw = prompt('관리자 비밀번호:');
+    if(pw !== ADMIN_PW){ if(pw !== null) alert('비밀번호가 틀렸습니다.'); return; }
+    sessionStorage.setItem('adminUnlocked','1');
+  }
   const p=document.getElementById('adminPanel');
   if(p) p.classList.toggle('open');
 }
 // 비밀번호 입력 후 버튼 표시
 function unlockAdmin(){
+  // 로컬 파일(오프라인)에서는 비밀번호 없이 자동 열림
+  if(location.protocol === 'file:'){
+    document.querySelector('.admin-btn-float').classList.add('unlocked');
+    sessionStorage.setItem('adminUnlocked','1');
+    toggleAdmin();
+    return;
+  }
   const pw = prompt('관리자 비밀번호를 입력하세요:');
   if(pw === ADMIN_PW){
     document.querySelector('.admin-btn-float').classList.add('unlocked');
@@ -1452,11 +1828,625 @@ function unlockAdmin(){
   window.addEventListener('hashchange', checkHash);
 })();
 // 세션 유지 (새로고침해도 비번 재입력 불필요)
-if(sessionStorage.getItem('adminUnlocked')==='1'){
+if(sessionStorage.getItem('adminUnlocked')==='1' || location.protocol==='file:'){
   document.querySelector('.admin-btn-float')?.classList.add('unlocked');
 }
-function saveImg(type){}
+function saveImg(type){
+  // hero 배경 저장 (popup은 addPopupImages/savePopupImages 사용)
+  if(type==='hero'){
+    const file=document.getElementById('heroFile').files[0];
+    if(!file){alert('파일을 먼저 선택해주세요.');return;}
+    const r=new FileReader();
+    r.onload=function(e){
+      const dataUrl=e.target.result;
+      try {
+        localStorage.setItem('heroBg',dataUrl);
+        const bg=document.getElementById('heroBg');
+        if(bg)bg.style.backgroundImage=`url('${dataUrl}')`;
+        alert('히어로 이미지가 저장되었습니다!');
+      } catch(e){ alert('저장 실패: 용량이 너무 큽니다.'); }
+    };
+    r.readAsDataURL(file);
+  }
+}
 function previewImg(type){const f=document.getElementById(type+'File');if(!f||!f.files[0])return;const r=new FileReader();r.onload=e=>{if(type==='hero'){const bg=document.getElementById('heroBg');if(bg)bg.style.backgroundImage=`url('${e.target.result}')`;localStorage.setItem('heroBg',e.target.result);}};r.readAsDataURL(f.files[0]);}
 </script>
+
+<script>
+/* ══════════════════════════════════════
+   DYNAMIC EFFECTS v4
+══════════════════════════════════════ */
+
+const S = document.createElement('style');
+S.textContent = `
+  /* ─ 멀리서 날아오는 효과 ─ */
+  .fly-left  { opacity:0; transform:translateX(-90px) translateY(20px);
+               transition:opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+  .fly-right { opacity:0; transform:translateX(90px) translateY(20px);
+               transition:opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+  .fly-up    { opacity:0; transform:translateY(70px);
+               transition:opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1); }
+  .fly-zoom  { opacity:0; transform:scale(.88) translateY(30px);
+               transition:opacity .75s ease, transform .75s cubic-bezier(.16,1,.3,1); }
+  .fly-left.on,.fly-right.on,.fly-up.on,.fly-zoom.on { opacity:1; transform:none; }
+
+  /* ─ 섹션 타이틀: 위에서 내려오기 ─ */
+  .section-title {
+    opacity:0; transform:translateY(-30px);
+    transition:opacity .7s ease .1s, transform .7s cubic-bezier(.16,1,.3,1) .1s;
+    position:relative; display:inline-block;
+  }
+  .section-title.on { opacity:1; transform:none; }
+  .section-title::after {
+    content:''; position:absolute; bottom:-6px; left:0; width:0; height:3px;
+    background:var(--gradient-son); border-radius:2px;
+    transition:width 1s cubic-bezier(.16,1,.3,1) .5s;
+  }
+  .section-title.on::after { width:100%; }
+
+  /* ─ eyebrow 레이블 ─ */
+  .eyebrow {
+    opacity:0; transform:translateY(-16px);
+    transition:opacity .5s ease, transform .5s ease;
+    display:inline-block;
+  }
+  .eyebrow.on { opacity:1; transform:none; }
+
+  /* ─ section-lead ─ */
+  .section-lead {
+    opacity:0; transform:translateY(20px);
+    transition:opacity .65s ease .3s, transform .65s ease .3s;
+  }
+  .section-lead.on { opacity:1; transform:none; }
+
+  /* ─ 카운터 ─ */
+  .stat-num .csuf {
+    font-size:18px; font-weight:600;
+    background:var(--gradient-son);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  @media(max-width:768px){ .stat-num .csuf{font-size:14px} }
+
+  /* ─ 키워드 하이라이트 ─ */
+  .kw {
+    display:inline;
+    background:linear-gradient(90deg,transparent 50%,rgba(237,72,36,.2) 50%);
+    background-size:200% 100%; background-position:0 0;
+    padding:1px 3px; border-radius:3px;
+    transition:background-position .75s ease;
+  }
+  .kw.on { background-position:-100% 0; }
+
+  /* ─ 마르키 ─ */
+  .marquee-track {
+    display:flex; gap:48px; white-space:nowrap;
+    animation:mq 30s linear infinite;
+  }
+  @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ─ stat 호버 ─ */
+  .stat-item { transition:background .25s; cursor:default; }
+  .stat-item:hover { background:rgba(255,255,255,.07); }
+
+  /* ─ 카드 호버 ─ */
+  .son-card, .trust-card {
+    transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease !important;
+  }
+  .son-card:hover, .trust-card:hover { transform:translateY(-7px) scale(1.015) !important; }
+  .doctor-card { transition:transform .3s cubic-bezier(.16,1,.3,1) !important; }
+  .doctor-card:hover { transform:translateY(-6px) !important; }
+
+  /* ─ 타이핑 ─ */
+  .tcursor::after { content:'|'; animation:blink .75s step-end infinite; color:rgba(255,255,255,.65); }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ─ 히어로 sub/actions 등장 ─ */
+  .hero-sub,.hero-actions { opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+  .hero-sub.vis,.hero-actions.vis { opacity:1; transform:none; }
+`;
+document.head.appendChild(S);
+
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+/* ══ IntersectionObserver ══ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const d = parseFloat(el.dataset.delay || 0);
+    setTimeout(() => {
+      el.classList.add('on');
+      if (el.dataset.cnt === '0') runCounter(el);
+    }, d * 1000);
+    io.unobserve(el);
+  });
+}, { threshold: 0.1 });
+
+/* ── 클래스 부여 헬퍼 ── */
+function tag(sel, cls, stagger) {
+  $$(sel).forEach((el, i) => {
+    el.classList.add(cls);
+    if (stagger) el.dataset.delay = (i * stagger).toFixed(2);
+    io.observe(el);
+  });
+}
+
+/* ── 섹션별 애니메이션 ── */
+// 섹션 헤더
+tag('.eyebrow',       'fly-up',    0);
+tag('.section-title', 'on-later',  0);   // 별도 처리
+tag('.section-lead',  'on-later2', 0);   // 별도 처리
+
+// 타이틀 — 위에서 내려오기 (CSS에 이미 적용됨)
+$$('.section-title').forEach(el => io.observe(el));
+$$('.eyebrow').forEach(el => io.observe(el));
+$$('.section-lead').forEach(el => io.observe(el));
+
+// 카드류 — 멀리서 날아오기
+tag('.son-card',          'fly-left',  .15);
+tag('.trust-card',        'fly-up',    .12);
+tag('.treat-block',       'fly-right', .1);
+tag('.doctor-card',       'fly-left',  .15);
+tag('.promise-mini-item', 'fly-up',    .12);
+tag('.promise-item',      'fly-up',    .1);
+tag('.val-item',          'fly-left',  .12);
+tag('.bto-card',          'fly-up',    .12);
+tag('.review-card',       'fly-zoom',  .1);
+tag('.test-quote-card',   'fly-zoom',  .12);
+tag('.loc-row',           'fly-left',  .12);
+tag('.cred',              'fly-up',    .1);
+tag('.award',             'fly-zoom',  .08);
+
+/* ══ 숫자 카운터 ══ */
+$$('.stat-num').forEach(el => {
+  const span = el.querySelector('span');
+  const suf  = span ? span.textContent.trim() : '';
+  const raw  = el.textContent.replace(suf,'').replace(/,/g,'').trim();
+  const num  = parseFloat(raw);
+  if (!isNaN(num) && num > 0) {
+    el.dataset.target = num;
+    el.dataset.suf    = suf;
+    el.dataset.cnt    = '0';
+    if (span) span.remove();
+    el.innerHTML = '0<span class="csuf">' + suf + '</span>';
+    io.observe(el);
+  }
+});
+
+function runCounter(el) {
+  const target = +el.dataset.target, suf = el.dataset.suf || '';
+  const dur = 2000, t0 = performance.now();
+  function upd(now) {
+    const p = Math.min((now-t0)/dur, 1);
+    const ease = 1 - Math.pow(1-p, 3);
+    el.innerHTML = Math.floor(target*ease).toLocaleString() + '<span class="csuf">'+suf+'</span>';
+    if (p < 1) requestAnimationFrame(upd);
+    else { el.innerHTML = target.toLocaleString()+'<span class="csuf">'+suf+'</span>'; el.dataset.cnt='1'; }
+  }
+  requestAnimationFrame(upd);
+}
+
+/* ══ 히어로 타이핑 ══ */
+(function(){
+  const title = document.querySelector('.hero-title');
+  if (!title) return;
+  const lines = ['13년동안 한자리에서','우리 곁, 진료 잘하는','연세손치과의원'];
+  title.innerHTML = '';
+  title.classList.add('tcursor');
+  let li=0, ci=0;
+  function type() {
+    if (li >= lines.length) {
+      title.classList.remove('tcursor');
+      setTimeout(() => {
+        const sub=document.querySelector('.hero-sub'), act=document.querySelector('.hero-actions');
+        if(sub) sub.classList.add('vis');
+        if(act) setTimeout(()=>act.classList.add('vis'),220);
+      }, 200);
+      return;
+    }
+    const line = lines[li];
+    if (ci < line.length) {
+      const done = lines.slice(0,li).map(l=>'<span>'+l+'</span><br>').join('');
+      title.innerHTML = done + '<span>'+line.slice(0,ci+1)+'</span>';
+      ci++;
+      setTimeout(type, li===0 ? 55 : 65);
+    } else { li++; ci=0; setTimeout(type, li<lines.length ? 300 : 0); }
+  }
+  setTimeout(type, 500);
+})();
+
+/* ══ 키워드 하이라이트 ══ */
+(function(){
+  const map = [
+    { sel:'.son-desc',          kw:['세브란스','전문의'] },  // 핵심문구는 son-em으로 처리
+    { sel:'.section-lead',      kw:['신뢰','약속','최우선','정석','전문의','가족'] },
+    { sel:'.promise-mini-text', kw:['가족','신뢰','억울','최선'] },
+    { sel:'.val-desc',          kw:[] },
+    { sel:'.doctor-tagline',    kw:['전문의','세브란스'] },
+    { sel:'.hero-sub',          kw:['연세대학교','전문의료진'] },
+  ];
+  map.forEach(({sel,kw}) => {
+    $$(sel).forEach(el => {
+      let h = el.innerHTML;
+      kw.forEach(w => {
+        h = h.replace(new RegExp('(?!<[^>]*>)('+w+')(?![^<]*>)','g'),
+          '<span class="kw" data-delay="0.2">$1</span>');
+      });
+      el.innerHTML = h;
+    });
+  });
+  $$('.kw').forEach(el => io.observe(el));
+})();
+
+/* ══ 마르키 배너 ══ */
+(function(){
+  const statsBar = $('.stats-bar');
+  if (!statsBar) return;
+  const div = document.createElement('div');
+  div.style.cssText = 'background:var(--son-navy);padding:13px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.1)';
+  const items = ['🏆 보건복지부장관상','🎓 연세대 치과대학','🏥 세브란스병원 수련','🔬 SCI 논문 8편+','⭐ 임플란트 12,000케이스','📍 13년 한자리','💎 자체 기공소 운영','🤝 세브란스 외래교수'];
+  const txt = items.map(i=>`<span style="color:rgba(255,255,255,.55);font-size:13px;font-weight:600;letter-spacing:.5px">${i}</span>`).join('<span style="color:var(--son-s);margin:0 24px;font-size:9px">◆</span>');
+  div.innerHTML = `<div class="marquee-track">${txt.repeat(4)}</div>`;
+  statsBar.insertAdjacentElement('afterend', div);
+})();
+
+/* ══ 맘키룸 / prog-row 전용 액티브 효과 ══ */
+(function(){
+  const extraCSS = document.createElement('style');
+  extraCSS.textContent = `
+    /* prog-tag 팝인 */
+    .prog-tag {
+      opacity:0; transform:scale(.75) translateY(-8px);
+      transition:opacity .5s cubic-bezier(.34,1.56,.64,1), transform .5s cubic-bezier(.34,1.56,.64,1);
+      display:inline-block;
+    }
+    .prog-tag.on { opacity:1; transform:none; }
+
+    /* prog-title 줄별 슬라이드 */
+    .prog-title-line {
+      display:block; overflow:hidden;
+    }
+    .prog-title-inner {
+      display:block;
+      opacity:0; transform:translateX(-40px);
+      transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .prog-title-line.on .prog-title-inner { opacity:1; transform:none; }
+
+    /* prog-desc 페이드업 */
+    .prog-desc {
+      opacity:0; transform:translateY(18px);
+      transition:opacity .65s ease .2s, transform .65s ease .2s;
+    }
+    .prog-desc.on { opacity:1; transform:none; }
+
+    /* bto-item — 왼쪽에서 순차 등장 */
+    .bto-item {
+      opacity:0; transform:translateX(-60px);
+      transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .bto-item.on { opacity:1; transform:none; }
+
+    /* bto-label 첫 글자(M/K/R/S/O/N) 펄스 */
+    .bto-label-letter {
+      display:inline-flex; align-items:center; justify-content:center;
+      width:28px; height:28px; border-radius:8px;
+      font-size:16px; font-weight:900;
+      color:#fff;
+      margin-right:8px; flex-shrink:0;
+      opacity:0; transform:scale(0) rotate(-20deg);
+      transition:opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .bto-item.on .bto-label-letter {
+      opacity:1; transform:scale(1) rotate(0deg);
+    }
+
+    /* prog-photo 이미지 줌인 등장 */
+    .prog-photo {
+      opacity:0; transform:scale(.92) translateX(30px);
+      transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+    }
+    .prog-photo.on { opacity:1; transform:none; }
+    .prog-row.reverse .prog-photo {
+      transform:scale(.92) translateX(-30px);
+    }
+  `;
+  document.head.appendChild(extraCSS);
+
+  // bto-label 첫 글자 래핑 (색상 인라인으로 고정)
+  document.querySelectorAll('.bto-label').forEach(el => {
+    const color = el.style.color || 'var(--son-s)';
+    const text = el.innerHTML;
+    el.innerHTML = text.replace(/^([A-Z])(\s)/,
+      '<span class="bto-label-letter" style="background:' + color + '">$1</span>$2');
+  });
+
+  // prog-title 줄 분리 애니메이션
+  document.querySelectorAll('.prog-title').forEach(el => {
+    const lines = el.innerHTML.split('<br>');
+    el.innerHTML = lines.map((line, i) =>
+      `<span class="prog-title-line" data-delay="${(i * 0.15).toFixed(2)}">` +
+      `<span class="prog-title-inner">${line}</span></span>`
+    ).join('');
+  });
+
+  // IntersectionObserver 재활용 (전역 io 사용)
+  const progIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const d = parseFloat(el.dataset.delay || 0);
+      setTimeout(() => el.classList.add('on'), d * 1000);
+      progIo.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  // 관찰 대상 등록
+  document.querySelectorAll('.prog-tag').forEach(el => progIo.observe(el));
+  document.querySelectorAll('.prog-title-line').forEach((el, i) => {
+    el.dataset.delay = (0.1 + i * 0.15).toFixed(2);
+    progIo.observe(el);
+  });
+  document.querySelectorAll('.prog-desc').forEach(el => progIo.observe(el));
+  document.querySelectorAll('.bto-item').forEach((el, i) => {
+    el.dataset.delay = (0.3 + i * 0.18).toFixed(2);
+    progIo.observe(el);
+  });
+  document.querySelectorAll('.prog-photo').forEach((el, i) => {
+    el.dataset.delay = (0.15 + i * 0.1).toFixed(2);
+    progIo.observe(el);
+  });
+})();
+
+/* ══ 스크롤 진행바 ══ */
+(function(){
+  const bar = document.getElementById('scroll-bar');
+  if (!bar) return;
+  function upd(){
+    const total = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY/total*100)+'%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+})();
+</script>
+
+
+
+
+<script>
+/* ── IMAGE ZOOM-ON-ENTRY + PARALLAX ─────────────────────────── */
+(function(){
+  // Zoom-on-entry: IntersectionObserver for .prog-photo, .gal-item, .doctor-photo-wrap
+  const zoomTargets = document.querySelectorAll('.prog-photo, .gal-item, .doctor-photo-wrap');
+  const zoomObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('ir-visible'); zoomObs.unobserve(e.target); }
+    });
+  },{threshold:0.15});
+  zoomTargets.forEach(el=>zoomObs.observe(el));
+
+  // Parallax scroll on .px-img elements
+  const pxImgs = document.querySelectorAll('.px-img');
+  let rafId = null;
+  function updateParallax(){
+    const sy = window.scrollY;
+    pxImgs.forEach(img=>{
+      const rect = img.getBoundingClientRect();
+      const wh = window.innerHeight;
+      // How far the element center is from viewport center
+      const centerOffset = (rect.top + rect.height/2) - wh/2;
+      const speed = 0.12;
+      const shift = centerOffset * speed;
+      // Scale based on how close to center: max scale 1.08 when far, 1.0 when centered
+      const distFromCenter = Math.abs(centerOffset) / wh;
+      const scale = 1.0 + Math.min(distFromCenter * 0.10, 0.08);
+      img.style.transform = `scale(${scale.toFixed(4)}) translateY(${shift.toFixed(1)}px)`;
+      img.style.transition = 'none';
+    });
+    rafId = null;
+  }
+  window.addEventListener('scroll',()=>{
+    if(!rafId) rafId = requestAnimationFrame(updateParallax);
+  },{passive:true});
+  updateParallax();
+
+  // Promise side image parallax
+  const promiseImgWrap = document.querySelector('.promise-group-img');
+  if(promiseImgWrap){
+    const pImg = promiseImgWrap.querySelector('img');
+    if(pImg){
+      window.addEventListener('scroll',()=>{
+        const rect = promiseImgWrap.getBoundingClientRect();
+        const wh = window.innerHeight;
+        const progress = (rect.top + rect.height/2 - wh/2) / wh;
+        const shift = progress * 30;
+        const scale = 1.0 + Math.abs(progress) * 0.06;
+        pImg.style.transform = `scale(${Math.min(scale,1.08).toFixed(4)}) translateY(${shift.toFixed(1)}px)`;
+        pImg.style.transition = 'none';
+      },{passive:true});
+    }
+  }
+})();
+</script>
+<script>
+(function(){
+  const vs = document.querySelector('.video-section');
+  if(!vs) return;
+  const ob = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ vs.classList.add('vid-visible'); ob.unobserve(vs); }});
+  },{threshold:0.3});
+  ob.observe(vs);
+})();
+</script>
+<script>
+/* ══ TREATMENT — CINEMATIC SCROLL ZOOM ══════════════════════════ */
+(function(){
+  const catInfo = {
+    'treat-general':   {tag:'GENERAL CARE', name:'일반 진료',   color:'#ED4824'},
+    'treat-implant':   {tag:'IMPLANT',      name:'임플란트',    color:'#00A2E8'},
+    'treat-ortho':     {tag:'ORTHODONTICS', name:'교정 클리닉', color:'#58B847'},
+    'treat-aesthetic': {tag:'AESTHETIC',    name:'심미 클리닉', color:'#ED4824'},
+    'treat-special':   {tag:'SPECIAL CARE', name:'특수 클리닉', color:'#9B59B6'}
+  };
+
+  /* ── 슬라이드 데이터 수집 ─────────────────────────────────── */
+  const slides = [];
+  document.querySelectorAll('.treat-cat-section').forEach(catEl=>{
+    const ci = catInfo[catEl.id]||{tag:'',name:'',color:'#ED4824'};
+    catEl.querySelectorAll('.treat-block').forEach(block=>{
+      const inners = Array.from(block.querySelectorAll('.treat-inner'));
+      const blockNum   = block.querySelector('.treat-block-num')?.textContent?.trim()||'';
+      const blockTitle = block.querySelector('.treat-block-title')?.textContent?.trim()||'';
+      if(inners.length<=1){
+        const inn=inners[0]; if(!inn) return;
+        const img=inn.querySelector('img');
+        const ps=inn.querySelectorAll('p');
+        const sub=ps[0]?.textContent?.trim()||'';
+        const body=ps[1]?.innerHTML||ps[0]?.innerHTML||'';
+        slides.push({cat:ci,num:blockNum,title:blockTitle,subtitle:sub,body,imgSrc:img?.src||'',imgAlt:img?.alt||''});
+      } else {
+        inners.forEach((inn,idx)=>{
+          const ps=inn.querySelectorAll('p');
+          const tag=ps[0]?.textContent?.trim()||'';
+          const title=ps[1]?.textContent?.trim()||tag;
+          const img=inn.querySelector('img');
+          const body=ps[2]?.innerHTML||ps[1]?.innerHTML||'';
+          slides.push({cat:ci,num:String(idx+1).padStart(2,'0'),title,subtitle:tag,body,imgSrc:img?.src||'',imgAlt:img?.alt||''});
+        });
+      }
+    });
+  });
+  if(!slides.length) return;
+
+  /* ── DOM 제거 ─────────────────────────────────────────────── */
+  const section = document.getElementById('treatments');
+  section.querySelectorAll('.treat-cat-section').forEach(el=>el.remove());
+
+  /* ── 스크롤 드라이버 (전체 높이) ─────────────────────────── */
+  // 카드 1장당 90vh 드라이브
+  const PER = 90;
+  const driver = document.createElement('div');
+  driver.className = 'treat-driver';
+  driver.style.height = (slides.length * PER + 50) + 'vh'; // 여유 50vh
+
+  const sticky = document.createElement('div');
+  sticky.className = 'treat-sticky';
+
+  /* HUD */
+  const hud = document.createElement('div');
+  hud.className = 'treat-hud';
+  hud.innerHTML = '<span class="treat-hud-cat"></span><span class="treat-hud-counter"></span><div class="treat-hud-progress"></div>';
+  sticky.appendChild(hud);
+
+  /* Stage */
+  const stage = document.createElement('div');
+  stage.className = 'treat-slide-stage';
+  sticky.appendChild(stage);
+
+  /* 카드 생성 */
+  slides.forEach((s,i)=>{
+    const card = document.createElement('div');
+    card.className = 'treat-slide';
+    card.innerHTML = `
+      <div class="treat-slide-text">
+        <div class="treat-slide-cat-badge">
+          <span class="treat-slide-cat-tag" style="background:${s.cat.color}1a;color:${s.cat.color}">${s.cat.tag}</span>
+          <span class="treat-slide-cat-name">${s.cat.name}</span>
+        </div>
+        <h3 class="treat-slide-title">${s.title}</h3>
+        ${s.subtitle&&s.subtitle!==s.title?`<p class="treat-slide-subtitle" style="color:${s.cat.color}">${s.subtitle}</p>`:''}
+        <p class="treat-slide-body">${s.body}</p>
+      </div>
+      <div class="treat-slide-visual" style="background:linear-gradient(145deg,${s.cat.color}20,${s.cat.color}0a)">
+        ${s.imgSrc ? `<img class="treat-slide-visual-img" src="${s.imgSrc}" alt="${s.imgAlt}">` : `<div class="treat-slide-visual-num" style="color:${s.cat.color}">${String(i+1).padStart(2,'0')}</div>`}
+        <div class="treat-slide-visual-title" style="color:${s.cat.color}">${s.title}</div>
+      </div>`;
+    stage.appendChild(card);
+  });
+
+  /* Dots */
+  const dots = document.createElement('div');
+  dots.className = 'treat-dots';
+  slides.forEach((_,i)=>{
+    const d = document.createElement('button');
+    d.className = 'treat-dot' + (i===0?' td-active':'');
+    d.onclick = ()=>{
+      const targetScroll = driver.offsetTop + (i / slides.length) * (driver.offsetHeight - window.innerHeight) + 8;
+      window.scrollTo({top: targetScroll, behavior:'smooth'});
+    };
+    dots.appendChild(d);
+  });
+  sticky.appendChild(dots);
+
+  driver.appendChild(sticky);
+  section.querySelector('.container').after(driver);
+
+  /* ── HUD refs ─────────────────────────────────────────────── */
+  const CARDS = Array.from(stage.querySelectorAll('.treat-slide'));
+  const DOTS  = Array.from(dots.querySelectorAll('.treat-dot'));
+  const hudCat = hud.querySelector('.treat-hud-cat');
+  const hudNum = hud.querySelector('.treat-hud-counter');
+  const hudPrg = hud.querySelector('.treat-hud-progress');
+  let lastIdx = -1;
+
+  /* ── 시네마틱 스크롤 계산 ─────────────────────────────────── */
+  function ease(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function onScroll(){
+    const dTop    = driver.offsetTop;
+    const dHeight = driver.offsetHeight;
+    const vH      = window.innerHeight;
+    const scrollY = window.scrollY;
+    // 섹션 내 진행도 (0 ~ 1)
+    const sectionProgress = (scrollY - dTop) / (dHeight - vH);
+    if(sectionProgress < 0 || sectionProgress > 1.05) return;
+
+    const N = slides.length;
+    // 각 카드의 중심 진행도
+    CARDS.forEach((card, i)=>{
+      // 각 카드의 "등장 중심" 진행도
+      const cardCenter = i / (N - 1 + 0.001);
+      // 현재 진행도와 카드 중심의 거리 (0~1 범위)
+      const dist = Math.abs(sectionProgress - cardCenter);
+      const range = 0.7 / N; // 활성화 범위
+
+      if(dist < range){
+        const t = 1 - (dist / range); // 0~1
+        const easedT = ease(t);
+        const scale   = 0.72 + easedT * 0.28;   // 0.72 → 1.0
+        const opacity = 0.3 + easedT * 0.7;      // 0.3 → 1.0
+        const blur    = (1-easedT) * 6;           // 6px → 0px
+        card.style.transform = `scale(${scale.toFixed(4)})`;
+        card.style.opacity   = opacity.toFixed(4);
+        card.style.filter    = blur > 0.1 ? `blur(${blur.toFixed(1)}px)` : '';
+        card.style.zIndex    = Math.round(easedT * 10);
+        card.style.pointerEvents = easedT > 0.8 ? 'auto' : 'none';
+      } else {
+        // 화면 밖 카드
+        const behind = sectionProgress > cardCenter;
+        card.style.transform = `scale(${behind ? 0.82 : 0.72}) translateY(${behind ? '-5%' : '6%'})`;
+        card.style.opacity   = '0';
+        card.style.filter    = 'blur(6px)';
+        card.style.zIndex    = '0';
+        card.style.pointerEvents = 'none';
+      }
+    });
+
+    // HUD 업데이트: 가장 가까운 카드
+    const activeIdx = Math.min(Math.round(sectionProgress * (N-1)), N-1);
+    if(activeIdx !== lastIdx && activeIdx >= 0){
+      lastIdx = activeIdx;
+      hudCat.textContent = slides[activeIdx].cat.name;
+      hudNum.textContent = (activeIdx+1) + ' / ' + N;
+      hudPrg.style.width = ((activeIdx+1)/N*100) + '%';
+      DOTS.forEach((d,j)=>d.classList.toggle('td-active', j===activeIdx));
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // 초기 실행
+  setTimeout(onScroll, 100);
+})();
+</script>
 </body>
-</html>
